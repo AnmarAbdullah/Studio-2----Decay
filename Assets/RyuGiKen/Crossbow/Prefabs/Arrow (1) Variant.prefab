@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Arrow (1) Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 1485033661919127733, guid: 9cf91ed6a1c1f3542abba4523b859489, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1485033661919127739, guid: 9cf91ed6a1c1f3542abba4523b859489, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -71,5 +75,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4235758168102637082, guid: 9cf91ed6a1c1f3542abba4523b859489, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9cf91ed6a1c1f3542abba4523b859489, type: 3}
