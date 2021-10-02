@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public float gravity = -9.81f;
 
     public CharacterController controller;
+    AudioSource walkingSoundEff;
 
     Vector3 velocity;
 
@@ -19,6 +20,10 @@ public class PlayerController : MonoBehaviour
     public bool isGrounded;
 
     public GameObject crossBow;
+    void Start()
+    {
+        walkingSoundEff = GetComponent<AudioSource>();
+    }
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
@@ -27,6 +32,12 @@ public class PlayerController : MonoBehaviour
         {
             velocity.y = -2;
         }
+        if(Input.GetKeyDown(KeyCode.W))
+        {
+            walkingSoundEff.Play();
+        }
+        else if (Input.GetKeyUp(KeyCode.W)) { walkingSoundEff.Stop(); }
+
 
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
