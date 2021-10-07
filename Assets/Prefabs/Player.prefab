@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 8804103464279117379}
   - component: {fileID: 8804103464279117381}
   - component: {fileID: 8804103464279117378}
-  - component: {fileID: 8804103464279117380}
+  - component: {fileID: 5236063232564290844}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -281,6 +281,7 @@ MonoBehaviour:
   speed: 40
   gravity: -9.81
   controller: {fileID: 8804103464279117381}
+  walkingSoundEff: {fileID: 5236063232564290844}
   groundCheck: {fileID: 8804103464194407847}
   groundDistance: 0.4
   groundMask:
@@ -289,7 +290,7 @@ MonoBehaviour:
   jumpHeight: 3
   isGrounded: 0
   crossBow: {fileID: 0}
---- !u!82 &8804103464279117380
+--- !u!82 &5236063232564290844
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public float gravity = -9.81f;
 
     public CharacterController controller;
-    AudioSource walkingSoundEff;
+    public AudioSource walkingSoundEff;
 
     Vector3 velocity;
 
@@ -28,16 +28,20 @@ public class PlayerController : MonoBehaviour
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
+        if (Input.GetButtonDown("Horizontal") || Input.GetButtonDown("Vertical") && isGrounded)
+        {
+            walkingSoundEff.Play();
+        }
+        else if(!isGrounded || !Input.GetButton("Horizontal") && !Input.GetButton("Vertical"))
+        {
+            walkingSoundEff.Stop();
+        }
+
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2;
         }
-        if(Input.GetKeyDown(KeyCode.W))
-        {
-            walkingSoundEff.Play();
-        }
-        else if (Input.GetKeyUp(KeyCode.W)) { walkingSoundEff.Stop(); }
-
+        
 
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
@@ -46,9 +50,10 @@ public class PlayerController : MonoBehaviour
 
         controller.Move(movement * speed * Time.deltaTime);
 
+
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
+           velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
         }
 
         velocity.y += gravity * Time.deltaTime;
