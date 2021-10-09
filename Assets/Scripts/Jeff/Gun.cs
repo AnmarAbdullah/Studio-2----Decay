@@ -22,6 +22,8 @@ public class Gun : MonoBehaviour
 
     public Animator animator;
 
+
+   
     private void Start()
     {
         if (currentAmmoAmount == -1)
@@ -77,6 +79,7 @@ public class Gun : MonoBehaviour
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
             Debug.Log(hit.transform.name);
+
 
             Target target = hit.transform.GetComponent<Target>();
             if (target != null)
