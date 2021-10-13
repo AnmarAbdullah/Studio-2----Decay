@@ -1585,7 +1585,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076547183}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ecd56c461078e4a8ce5082495567e9, type: 3}
   m_Name: 
@@ -1600,7 +1600,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076547183}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37d55c63395f3d243ad87318744575bf, type: 3}
   m_Name: 
@@ -1636,12 +1636,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 19374821152368117}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37d55c63395f3d243ad87318744575bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireClass: {fileID: 0}
+  FireClass: {fileID: 3995998234246211028}
   RecoilPositionTranform: {fileID: 1382853236}
   RecoilRotationTranform: {fileID: 1836494079}
   PositionDampTime: 4
@@ -2014,7 +2014,7 @@ MonoBehaviour:
   muzzleFlash: {fileID: 6892146463643580712}
   impactEffect: {fileID: 100006, guid: 0438351a6e6422d43a09930e9be00ee9, type: 3}
   animator: {fileID: 3995998234246211038}
-  recoil: {fileID: 0}
+  recoil: {fileID: 3995998234246211029}
 --- !u!114 &3995998234246211029
 MonoBehaviour:
   m_ObjectHideFlags: 0
