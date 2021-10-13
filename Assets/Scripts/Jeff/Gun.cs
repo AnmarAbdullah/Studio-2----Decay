@@ -22,7 +22,7 @@ public class Gun : MonoBehaviour
 
     public Animator animator;
 
-
+    public new_weapon_recoil_script recoil;
    
     private void Start()
     {
@@ -75,6 +75,9 @@ public class Gun : MonoBehaviour
 
         muzzleFlash.Play();
 
+        recoil.Firerecoil();
+
+
         RaycastHit hit;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
@@ -92,9 +95,11 @@ public class Gun : MonoBehaviour
                 hit.rigidbody.AddForce(-hit.normal * impactForce);
             }
 
+
             GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
 
             Destroy(impactGO, 2f);
         }
+
     }
 }
