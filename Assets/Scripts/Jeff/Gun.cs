@@ -1,5 +1,5 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
@@ -7,16 +7,27 @@ public class Gun : MonoBehaviour
     public float range = 100f;
     public float impactForce = 100f;
     public float fireRate = 15f;
+    public bool autoFire;
+    public float scopedFOV = 15f;
 
     public int maxAmmo = 10;
     int currentAmmoAmount = -1;
     public float reloadTime = 1f;
     bool isReloading = false;
+    bool isScoped = false;
+    public bool isSniper;
+    float normalFOV;
 
 
     public Camera fpsCam;
     public ParticleSystem muzzleFlash;
     public GameObject impactEffect;
+    public GameObject scopeOverlay;
+    public GameObject weaponCamera;
+    public GameObject crosshair;
+
+    public AudioSource fireSound;
+    public AudioSource reloadSound;
 
     float nextTimeToFire = 0f;
 
@@ -46,11 +57,28 @@ public class Gun : MonoBehaviour
             return;
         }
 
-        if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire)
+        if (autoFire == true && Input.GetButton("Fire1") && Time.time >= nextTimeToFire)
         {
             nextTimeToFire = Time.time + 1f / fireRate;
             Shoot();
         }
+        if (autoFire == false && Input.GetButtonDown("Fire1") && Time.time >= nextTimeToFire)
+        {
+            nextTimeToFire = Time.time + 1f / fireRate;
+            Shoot();
+        }
+        if (isSniper == true && Input.GetButtonDown("Fire2"))
+        {
+            isScoped = !isScoped;
+            animator.SetBool("Scoped", isScoped);
+
+            if (isScoped)
+                StartCoroutine(OnScoped());
+            else
+                UnScoped();
+        }
+
+        
     }
 
     IEnumerator Reload()
@@ -74,6 +102,7 @@ public class Gun : MonoBehaviour
         currentAmmoAmount--;
 
         muzzleFlash.Play();
+        fireSound.Play();
 
         recoil.Firerecoil();
 
@@ -101,5 +130,27 @@ public class Gun : MonoBehaviour
             Destroy(impactGO, 2f);
         }
 
+    }
+
+    IEnumerator OnScoped()
+    {
+        yield return new WaitForSeconds(.15f);
+
+        scopeOverlay.SetActive(true);
+        weaponCamera.SetActive(false);
+        crosshair.SetActive(false);
+
+        normalFOV = fpsCam.fieldOfView;
+        fpsCam.fieldOfView = scopedFOV;
+
+    }
+
+    void UnScoped()
+    {
+        scopeOverlay.SetActive(false);
+        weaponCamera.SetActive(true);
+        crosshair.SetActive(true);
+
+        fpsCam.fieldOfView = normalFOV;
     }
 }
