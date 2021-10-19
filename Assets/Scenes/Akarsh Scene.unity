@@ -1059,11 +1059,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8370802328558119537, guid: 4a36f3a1e6f34494f8059f8dd3df1777, type: 3}
   m_PrefabInstance: {fileID: 2091828152}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &823490865 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4787407247547226210, guid: 4a36f3a1e6f34494f8059f8dd3df1777, type: 3}
-  m_PrefabInstance: {fileID: 2091828152}
-  m_PrefabAsset: {fileID: 0}
 --- !u!95 &823490868 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 3240984551978857752, guid: 4a36f3a1e6f34494f8059f8dd3df1777, type: 3}
@@ -1784,6 +1779,7 @@ MonoBehaviour:
   speed: 30
   gravity: -9.81
   controller: {fileID: 1586572706}
+  walkingSoundEff: {fileID: 0}
   groundCheck: {fileID: 1517477460}
   groundDistance: 0.4
   groundMask:
@@ -2051,7 +2047,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 1.0689998, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 823490865}
+  - {fileID: 2091828153}
   m_Father: {fileID: 1586572707}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 34.821, z: 0}
@@ -2463,6 +2459,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a36f3a1e6f34494f8059f8dd3df1777, type: 3}
+--- !u!4 &2091828153 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 2091828152}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2135733514
 GameObject:
   m_ObjectHideFlags: 0
