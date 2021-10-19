@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
 
     public CharacterController controller;
     public AudioSource walkingSoundEff;
+    public Camera camera;
+
+    public GameObject Grenade;
 
     Vector3 velocity;
 
@@ -17,15 +20,32 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundMask;
     public float jumpHeight = 3;
 
+    public float Health = 300;
+    public float healingTime;
+    bool isHealing = false;
+
+    // Ability Cooldown System------
+    float healCD = 8;
+    float nextHeal;
+
+    float GrenadeCD = 1;
+    float nextGrenade;
+
+    float stunCD = 3;
+    float nextStun;
+    // ------------------------------
+
+
     public bool isGrounded;
 
     public GameObject crossBow;
     void Start()
-    {
+    {       
         walkingSoundEff = GetComponent<AudioSource>();
     }
     void Update()
     {
+        // player movement system:
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         if (Input.GetButtonDown("Horizontal") || Input.GetButtonDown("Vertical") && isGrounded)
@@ -60,5 +80,72 @@ public class PlayerController : MonoBehaviour
 
         controller.Move(velocity * Time.deltaTime);
 
+      // health system :
+        StemShot();
+        if (Time.time > nextHeal)
+        {
+            if (Input.GetKeyDown(KeyCode.H))
+            {
+                isHealing = true;
+                nextHeal = Time.time + healCD;
+            }
+        }
+        if (Health >= 300)
+        {
+            Health = 300;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (Time.time > nextGrenade)
+        {
+            if (Input.GetKeyDown(KeyCode.G))
+            {
+                ThrowGrenade();
+                nextGrenade = Time.time + GrenadeCD;
+            }
+        }
+        if (Time.time > nextStun)
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                Stun();
+                nextStun = Time.time + stunCD;
+            }
+        }
+    }
+    void StemShot() // Ability 1
+    {
+        if (isHealing)
+        {
+            Health += 0.6f;
+            healingTime += Time.deltaTime;
+            if(healingTime >= 3)
+            {
+                isHealing = false;
+                healingTime = 0;
+            }
+        }
+    }
+
+    void ThrowGrenade() // Ability 2
+    {
+        Rigidbody rb = Instantiate(Grenade, camera.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+        rb.AddForce(transform.forward * 25, ForceMode.Impulse);
+    }
+
+
+    void Stun() // Ability 3
+    {
+        Collider[] collider = Physics.OverlapSphere(transform.position, 10);
+        foreach (Collider near in collider) // (int i=0; i < collider.Length; i++)
+        {
+            Rigidbody body = near.GetComponent<Rigidbody>();
+            if (body != null)
+            {
+                body.AddExplosionForce(15, transform.position, 10, 10, ForceMode.Impulse);
+            }
+        }
     }
 }

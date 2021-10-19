@@ -47,11 +47,26 @@ public class PickupThrow : MonoBehaviour
             }
         }
     }
-    void OnTriggerEnter()
+    void OnTriggerEnter(Collider other)
     {
         if (beingCarried)
         {
             touched = true;
         }
+        if (other.gameObject.CompareTag("Incinerator"))
+        {
+            Destroy(transform.gameObject);
+            // soon add +1 for a ui.
+        }
     }
+  /*  private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Incinerator"))
+        {
+            Destroy(transform.gameObject);
+            // soon add +1 for a ui.
+        }
+    }*/
+
+
 }
