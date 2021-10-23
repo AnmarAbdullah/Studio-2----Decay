@@ -4,6 +4,7 @@ public class GunSwitcher : MonoBehaviour
 {
     public int selectedWeapon = 0;
 
+
     void Start()
     {
         SelectWeapon();
@@ -21,6 +22,7 @@ public class GunSwitcher : MonoBehaviour
                 selectedWeapon = 0;
             else
                 selectedWeapon++;
+            
         }
 
         if (Input.GetAxis("Mouse ScrollWheel") < 0f)
@@ -42,10 +44,19 @@ public class GunSwitcher : MonoBehaviour
         foreach (Transform weapon in transform)
         {
             if (i == selectedWeapon)
+            {
                 weapon.gameObject.SetActive(true);
+            }
+
             else
+            {
                 weapon.gameObject.SetActive(false);
+                weapon.GetComponent<Gun>().UnScoped();
+
+            }
+                
             i++;
         }
+        
     }
 }
