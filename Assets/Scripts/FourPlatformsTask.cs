@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FourPlatformsTask : MonoBehaviour
 {
@@ -10,9 +11,12 @@ public class FourPlatformsTask : MonoBehaviour
     [SerializeField] float switchTimer;
     [SerializeField] float turnTimer;
     public float Meter;
+    public Image MeterUI;
     void Start()
     {
         //challengeMeter[challengeMeter.Length] = GetComponent<PlatformCollision>();
+        //MeterUI = GetComponent<Image>();
+        MeterUI.gameObject.SetActive(false);
     }
     void Update()
     {
@@ -21,7 +25,7 @@ public class FourPlatformsTask : MonoBehaviour
         {
             switchTimer = 0;
         }*/
-        if (switchTimer >= 10)
+        if (switchTimer >= 16)
         {
             PlatformIndex = Random.Range(0, Platforms.Length);
             var PlatformNumber = PlatformIndex;
@@ -47,11 +51,14 @@ public class FourPlatformsTask : MonoBehaviour
     void PlatformTriggered()
     {
         PlatformVisuals[PlatformIndex].Play();
-        Invoke(("PlatformHalt"), 7);
+        MeterUI.gameObject.SetActive(true);
+        Invoke(nameof(PlatformHalt), 13);
     }
     void PlatformHalt()
     {
         PlatformVisuals[PlatformIndex].Stop();
         PlatformIndex = 4;
+        Debug.Log("hellooo");
+        MeterUI.gameObject.SetActive(false);
     }
 }
