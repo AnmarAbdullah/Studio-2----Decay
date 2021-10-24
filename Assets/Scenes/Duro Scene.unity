@@ -177,7 +177,7 @@ Terrain:
   m_DrawTreesAndFoliage: 1
   m_StaticShadowCaster: 0
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 10652, guid: 0000000000000000f000000000000000, type: 0}
+  m_MaterialTemplate: {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -744,7 +744,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6e033140d0709bc49bb61afe1849d5db, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1573,108 +1573,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &2076547183 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8570100114814130814, guid: 2a7179b5f3bd5354da681edeeca85033, type: 3}
-  m_PrefabInstance: {fileID: 8804103463006752185}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2076547189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2076547183}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99ecd56c461078e4a8ce5082495567e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 50
-  returnSpeed: 5
-  RecoilRotation: {x: 8, y: 8, z: 8}
---- !u!114 &2076547190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2076547183}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37d55c63395f3d243ad87318744575bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FireClass: {fileID: 0}
-  RecoilPositionTranform: {fileID: 0}
-  RecoilRotationTranform: {fileID: 0}
-  PositionDampTime: 0
-  RotationDampTime: 0
-  Recoil1: 0
-  Recoil2: 0
-  Recoil3: 0
-  Recoil4: 0
-  RecoilRotation: {x: 0, y: 0, z: 0}
-  RecoilKickBack: {x: 0, y: 0, z: 0}
-  RecoilRotation_Aim: {x: 0, y: 0, z: 0}
-  RecoilKickBack_Aim: {x: 0, y: 0, z: 0}
-  CurrentRecoil1: {x: 0, y: 0, z: 0}
-  CurrentRecoil2: {x: 0, y: 0, z: 0}
-  CurrentRecoil3: {x: 0, y: 0, z: 0}
-  CurrentRecoil4: {x: 0, y: 0, z: 0}
-  RotationOutput: {x: 0, y: 0, z: 0}
-  aim: 0
---- !u!1 &19374821152368117 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6908812087566857487, guid: 98ab26b1872bd6a499a1bb6975fa88c2, type: 3}
-  m_PrefabInstance: {fileID: 7229628787675552028}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &19374821152368118
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 19374821152368117}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37d55c63395f3d243ad87318744575bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FireClass: {fileID: 3995998234246211028}
-  RecoilPositionTranform: {fileID: 1382853236}
-  RecoilRotationTranform: {fileID: 1836494079}
-  PositionDampTime: 4
-  RotationDampTime: 2
-  Recoil1: 35
-  Recoil2: 50
-  Recoil3: 35
-  Recoil4: 80
-  RecoilRotation: {x: -90, y: 70, z: 70}
-  RecoilKickBack: {x: 0.2, y: 0.2, z: 0.2}
-  RecoilRotation_Aim: {x: 3.43, y: 0, z: 0}
-  RecoilKickBack_Aim: {x: 0, y: 0, z: 0}
-  CurrentRecoil1: {x: 0, y: 0, z: 0}
-  CurrentRecoil2: {x: 0, y: 0, z: 0}
-  CurrentRecoil3: {x: 0, y: 0, z: 0}
-  CurrentRecoil4: {x: 0, y: 0, z: 0}
-  RotationOutput: {x: 0, y: 0, z: 0}
-  aim: 0
---- !u!114 &19374821152368119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 19374821152368117}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99ecd56c461078e4a8ce5082495567e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 50
-  returnSpeed: 5
-  RecoilRotation: {x: 8, y: 8, z: 8}
 --- !u!1001 &565039315083721449
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1701,7 +1599,7 @@ PrefabInstance:
     - target: {fileID: 919132148152979996, guid: f5b843be081ecd9408cf687bd0c54e85, type: 3}
       propertyPath: muzzleFlash
       value: 
-      objectReference: {fileID: 6627592716256346642}
+      objectReference: {fileID: 0}
     - target: {fileID: 919132148152979996, guid: f5b843be081ecd9408cf687bd0c54e85, type: 3}
       propertyPath: impactEffect
       value: 
@@ -1764,11 +1662,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5b843be081ecd9408cf687bd0c54e85, type: 3}
---- !u!4 &796862121096773455 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6100925390835462069, guid: 98ab26b1872bd6a499a1bb6975fa88c2, type: 3}
-  m_PrefabInstance: {fileID: 7229628787675552028}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &796862122354621075 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3974837916924463516, guid: f5b843be081ecd9408cf687bd0c54e85, type: 3}
@@ -1953,25 +1846,6 @@ MonoBehaviour:
   rotationSpeed: 50
   returnSpeed: 5
   RecoilRotation: {x: 8, y: 8, z: 8}
---- !u!95 &3995998233760429446
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 19374821152368117}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 18026aae2917b8242a0f386c6fd31f66, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3995998234246211027
 GameObject:
   m_ObjectHideFlags: 0
@@ -2008,13 +1882,21 @@ MonoBehaviour:
   range: 100
   impactForce: 30
   fireRate: 5.84
+  autoFire: 0
+  scopedFOV: 15
   maxAmmo: 25
   reloadTime: 1
+  isScoped: 0
+  isSniper: 0
   fpsCam: {fileID: 3995998233294047247}
-  muzzleFlash: {fileID: 6892146463643580712}
+  muzzleFlash: {fileID: 0}
   impactEffect: {fileID: 100006, guid: 0438351a6e6422d43a09930e9be00ee9, type: 3}
+  scopeOverlay: {fileID: 0}
+  weaponCamera: {fileID: 0}
+  crosshair: {fileID: 0}
+  fireSound: {fileID: 0}
+  reloadSound: {fileID: 0}
   animator: {fileID: 3995998234246211038}
-  recoil: {fileID: 3995998234246211029}
 --- !u!114 &3995998234246211029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2057,7 +1939,7 @@ Transform:
   m_LocalPosition: {x: 0, y: -0.66, z: -0.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 796862121096773455}
+  - {fileID: 7229628787675552029}
   - {fileID: 796862122354621075}
   m_Father: {fileID: 3995998233294047240}
   m_RootOrder: 0
@@ -2094,16 +1976,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!198 &6627592716256346642 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 7484845761412034845, guid: f5b843be081ecd9408cf687bd0c54e85, type: 3}
-  m_PrefabInstance: {fileID: 565039315083721449}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &6892146463643580712 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 1719134674, guid: 98ab26b1872bd6a499a1bb6975fa88c2, type: 3}
-  m_PrefabInstance: {fileID: 7229628787675552028}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7229628787675552028
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2210,6 +2082,11 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 919132149612419016, guid: 98ab26b1872bd6a499a1bb6975fa88c2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 98ab26b1872bd6a499a1bb6975fa88c2, type: 3}
+--- !u!4 &7229628787675552029 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9108896165252643762, guid: 98ab26b1872bd6a499a1bb6975fa88c2, type: 3}
+  m_PrefabInstance: {fileID: 7229628787675552028}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8804103463006752185
 PrefabInstance:
   m_ObjectHideFlags: 0

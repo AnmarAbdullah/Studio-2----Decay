@@ -14,7 +14,7 @@ public class Gun : MonoBehaviour
     int currentAmmoAmount = -1;
     public float reloadTime = 1f;
     bool isReloading = false;
-    bool isScoped = false;
+    public bool isScoped = false;
     public bool isSniper;
     float normalFOV;
 
@@ -33,8 +33,8 @@ public class Gun : MonoBehaviour
 
     public Animator animator;
 
-    public new_weapon_recoil_script recoil;
-   
+    
+
     private void Start()
     {
         if (currentAmmoAmount == -1)
@@ -48,6 +48,14 @@ public class Gun : MonoBehaviour
     }
     void Update()
     {
+        if (isSniper == true && Input.GetButtonDown("Fire2"))
+        {
+            if (!isScoped)
+                StartCoroutine(OnScoped());
+            else
+                UnScoped();
+        }
+
         if (isReloading)
             return;
 
@@ -67,18 +75,7 @@ public class Gun : MonoBehaviour
             nextTimeToFire = Time.time + 1f / fireRate;
             Shoot();
         }
-        if (isSniper == true && Input.GetButtonDown("Fire2"))
-        {
-            isScoped = !isScoped;
-            animator.SetBool("Scoped", isScoped);
-
-            if (isScoped)
-                StartCoroutine(OnScoped());
-            else
-                UnScoped();
-        }
-
-        
+     
     }
 
     IEnumerator Reload()
@@ -104,7 +101,7 @@ public class Gun : MonoBehaviour
         muzzleFlash.Play();
         fireSound.Play();
 
-        recoil.Firerecoil();
+        
 
 
         RaycastHit hit;
@@ -122,8 +119,7 @@ public class Gun : MonoBehaviour
             if (hit.rigidbody != null)
             {
                 hit.rigidbody.AddForce(-hit.normal * impactForce);
-            }
-
+            }          
 
             GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
 
@@ -134,6 +130,8 @@ public class Gun : MonoBehaviour
 
     IEnumerator OnScoped()
     {
+        isScoped = true;
+        animator.SetBool("Scoped", isScoped);
         yield return new WaitForSeconds(.15f);
 
         scopeOverlay.SetActive(true);
@@ -145,8 +143,13 @@ public class Gun : MonoBehaviour
 
     }
 
-    void UnScoped()
+    public void UnScoped()
     {
+        if (!isScoped)
+            return;
+        
+        isScoped = false;
+        animator.SetBool("Scoped", isScoped);
         scopeOverlay.SetActive(false);
         weaponCamera.SetActive(true);
         crosshair.SetActive(true);
