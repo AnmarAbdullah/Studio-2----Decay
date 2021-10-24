@@ -24896,6 +24896,42 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4000011916567678, guid: a97ffd75102541b46b48cffc80ef3da0, type: 3}
   m_PrefabInstance: {fileID: 1530722724}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1535108317 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4275712435683757108, guid: 2a7179b5f3bd5354da681edeeca85033, type: 3}
+  m_PrefabInstance: {fileID: 157347135}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1535108320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1535108317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37d55c63395f3d243ad87318744575bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FireClass: {fileID: 0}
+  RecoilPositionTranform: {fileID: 0}
+  RecoilRotationTranform: {fileID: 0}
+  PositionDampTime: 0
+  RotationDampTime: 0
+  Recoil1: 0
+  Recoil2: 0
+  Recoil3: 0
+  Recoil4: 0
+  RecoilRotation: {x: 0, y: 0, z: 0}
+  RecoilKickBack: {x: 0, y: 0, z: 0}
+  RecoilRotation_Aim: {x: 0, y: 0, z: 0}
+  RecoilKickBack_Aim: {x: 0, y: 0, z: 0}
+  CurrentRecoil1: {x: 0, y: 0, z: 0}
+  CurrentRecoil2: {x: 0, y: 0, z: 0}
+  CurrentRecoil3: {x: 0, y: 0, z: 0}
+  CurrentRecoil4: {x: 0, y: 0, z: 0}
+  RotationOutput: {x: 0, y: 0, z: 0}
+  aim: 0
 --- !u!1001 &1536672149
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25626,6 +25662,26 @@ Transform:
   m_Father: {fileID: 1310732460}
   m_RootOrder: 47
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1578396752 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8804103464303820384, guid: 2a7179b5f3bd5354da681edeeca85033, type: 3}
+  m_PrefabInstance: {fileID: 157347135}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1578396756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1578396752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99ecd56c461078e4a8ce5082495567e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 10
+  returnSpeed: 5
+  RecoilRotation: {x: 2, y: 2, z: 2}
 --- !u!1001 &1582167574
 PrefabInstance:
   m_ObjectHideFlags: 0
