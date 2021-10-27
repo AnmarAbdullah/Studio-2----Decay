@@ -99,10 +99,7 @@ public class Gun : MonoBehaviour
         currentAmmoAmount--;
 
         muzzleFlash.Play();
-        fireSound.Play();
-
-        
-
+        fireSound.Play();     
 
         RaycastHit hit;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))

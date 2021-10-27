@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
     public CharacterController controller;
     public AudioSource walkingSoundEff;
     public Camera camera;
-
     public GameObject Grenade;
 
     Vector3 velocity;
@@ -23,6 +22,8 @@ public class PlayerController : MonoBehaviour
     public float Health = 300;
     public float healingTime;
     bool isHealing = false;
+
+    public int ChallengeIndex;
 
     // Ability Cooldown System------
     float healCD = 8;
@@ -38,7 +39,6 @@ public class PlayerController : MonoBehaviour
 
     public bool isGrounded;
 
-    public GameObject crossBow;
     void Start()
     {       
         walkingSoundEff = GetComponent<AudioSource>();

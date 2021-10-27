@@ -13,9 +13,13 @@ public class Enemy : MonoBehaviour
     public float speed;
 
     Transform player;
+    public PlayerController pplayer;
+    public Spawner spawner;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        pplayer = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        spawner = GameObject.FindGameObjectWithTag("Spawner").GetComponent<Spawner>();
     }
 
     // Update is called once per frame
