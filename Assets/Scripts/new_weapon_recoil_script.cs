@@ -48,11 +48,15 @@ public class new_weapon_recoil_script : MonoBehaviour
 
     void Update()
     {
-        
+        if (Input.GetButtonDown("Fire1"))
+        {
+            aim = true;
+            Firerecoil();
+        }
     }
     public void Firerecoil()
     {
-        if (aim != true)
+        if (aim == true)
         {
             
             CurrentRecoil1 += new Vector3(RecoilRotation.x, Random.Range(-RecoilRotation.y, RecoilRotation.y), Random.Range(-RecoilRotation.z, RecoilRotation.z));
