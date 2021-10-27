@@ -99,7 +99,7 @@ public class Gun : MonoBehaviour
         currentAmmoAmount--;
 
         muzzleFlash.Play();
-        fireSound.Play();
+        //fireSound.Play();
 
         
 

@@ -45,9 +45,14 @@ public class new_weapon_recoil_script : MonoBehaviour
         RotationOutput = Vector3.Slerp(RotationOutput, CurrentRecoil1, RotationDampTime * Time.fixedDeltaTime);
         RecoilRotationTranform.localRotation = Quaternion.Euler(RotationOutput);
     }
+
+    void Update()
+    {
+        
+    }
     public void Firerecoil()
     {
-        if (aim == true)
+        if (aim != true)
         {
             
             CurrentRecoil1 += new Vector3(RecoilRotation.x, Random.Range(-RecoilRotation.y, RecoilRotation.y), Random.Range(-RecoilRotation.z, RecoilRotation.z));
