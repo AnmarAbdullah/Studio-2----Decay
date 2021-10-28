@@ -12,6 +12,8 @@ public class Enemy : MonoBehaviour
 
     public float speed;
 
+    bool isDead;
+
     Transform player;
     public PlayerController pplayer;
     public Spawner spawner;

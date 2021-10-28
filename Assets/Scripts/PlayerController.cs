@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -25,15 +26,21 @@ public class PlayerController : MonoBehaviour
 
     public int ChallengeIndex;
 
-    // Ability Cooldown System------
+    // Ability Cooldown & amount System------ NEEDS REWORK
     float healCD = 8;
     float nextHeal;
+    public float heals;
+    public Text healsAmount;
 
     float GrenadeCD = 1;
     float nextGrenade;
+    public float grenades;
+    public Text grenadesAmount;
 
-    float stunCD = 3;
-    float nextStun;
+    public float stunCD = 7;
+    public float nextStun;
+    public Image stunCool;
+    public Text stunclDnUI;
     // ------------------------------
 
 
@@ -84,28 +91,37 @@ public class PlayerController : MonoBehaviour
 
       // health system :
         StemShot();
-        if (Time.time > nextHeal)
+       /* if (Time.time > nextHeal)
         {
-            if (Input.GetKeyDown(KeyCode.H))
+            if (Input.GetKeyDown(KeyCode.H) & heals > 0)
             {
                 isHealing = true;
                 nextHeal = Time.time + healCD;
+                heals--;
             }
         }
         if (Health >= 300)
         {
             Health = 300;
         }
+       */
+
+        grenadesAmount.text = grenades.ToString();
+        healsAmount.text = heals.ToString();
+        stunclDnUI.text = nextStun.ToString();
+
+       // stunCool.fillAmount = nextStun = stunCD;
     }
 
     private void FixedUpdate()
     {
-        if (Time.time > nextGrenade)
+        /*if (Time.time > nextGrenade)
         {
-            if (Input.GetKeyDown(KeyCode.G))
+            if (Input.GetKeyDown(KeyCode.G) & grenades > 0)
             {
                 ThrowGrenade();
                 nextGrenade = Time.time + GrenadeCD;
+                grenades--;
             }
         }
         if (Time.time > nextStun)
@@ -115,7 +131,7 @@ public class PlayerController : MonoBehaviour
                 Stun();
                 nextStun = Time.time + stunCD;
             }
-        }
+        }*/
     }
     void StemShot() // Ability 1
     {
