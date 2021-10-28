@@ -31,6 +31,8 @@ public class Gun : MonoBehaviour
     public AudioSource fireSound;
     public AudioSource reloadSound;
 
+    
+
     float nextTimeToFire = 0f;
 
     public Animator animator;
