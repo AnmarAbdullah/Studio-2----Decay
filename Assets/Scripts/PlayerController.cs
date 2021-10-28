@@ -58,10 +58,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Horizontal") || Input.GetButtonDown("Vertical") && isGrounded)
         {
             walkingSoundEff.Play();
+            
         }
         else if(!isGrounded || !Input.GetButton("Horizontal") && !Input.GetButton("Vertical"))
         {
             walkingSoundEff.Stop();
+            
         }
 
         if (isGrounded && velocity.y < 0)

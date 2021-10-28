@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Prefabs/ParticleEffects/BloodRain.prefab.meta
 guid: e7e83f4511d0a4846bb7fc84cf47a75d
 PrefabImporter:
+=======
+guid: 1b8d251f9af63b746bf2f7ffe00ebb9b
+DefaultImporter:
+>>>>>>> 5dedeed595ec406ae3c8cdd584cf123559fc2a20:Assets/TextMesh Pro/Documentation/TextMesh Pro User Guide 2016.pdf.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

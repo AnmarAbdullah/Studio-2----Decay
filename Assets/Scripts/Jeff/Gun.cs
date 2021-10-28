@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
+
 public class Gun : MonoBehaviour
 {
     public float damage = 10f;
@@ -20,7 +21,8 @@ public class Gun : MonoBehaviour
 
 
     public Camera fpsCam;
-    public ParticleSystem muzzleFlash;
+    public GameObject muzzleFlash;
+    
     public GameObject impactEffect;
     public GameObject scopeOverlay;
     public GameObject weaponCamera;
@@ -33,12 +35,20 @@ public class Gun : MonoBehaviour
 
     public Animator animator;
 
+    [Header("Recoil")]
+    public bool randomRecoil;
+    public Vector2 randomRecoilConstraints;
+
+    public Vector2 recoilPattern;
+
     
 
     private void Start()
     {
         if (currentAmmoAmount == -1)
             currentAmmoAmount = maxAmmo;
+
+        //muzzleFlash = GetComponent<GameObject>();
     }
 
     private void OnEnable()
@@ -68,11 +78,13 @@ public class Gun : MonoBehaviour
         if (autoFire == true && Input.GetButton("Fire1") && Time.time >= nextTimeToFire)
         {
             nextTimeToFire = Time.time + 1f / fireRate;
+            animator.SetBool("Running", false);
             Shoot();
         }
         if (autoFire == false && Input.GetButtonDown("Fire1") && Time.time >= nextTimeToFire)
         {
             nextTimeToFire = Time.time + 1f / fireRate;
+            animator.SetBool("Running", false);
             Shoot();
         }
      
@@ -94,21 +106,32 @@ public class Gun : MonoBehaviour
         currentAmmoAmount = maxAmmo;
         isReloading = false;
     }
+
+    void Recoil()
+    {
+        transform.localPosition -= Vector3.forward * 0.1f;
+        
+    }
     void Shoot()
     {
+        Recoil();
+
         currentAmmoAmount--;
 
-        muzzleFlash.Play();
-        //fireSound.Play();
+        //muzzleFlash.Play();
+        fireSound.Play();
+        //Instantiate(muzzleFlash);
 
-        
+        RaycastToTarget();
 
+    }
 
+    void RaycastToTarget()
+    {
         RaycastHit hit;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
             Debug.Log(hit.transform.name);
-
 
             Target target = hit.transform.GetComponent<Target>();
             if (target != null)
@@ -119,13 +142,12 @@ public class Gun : MonoBehaviour
             if (hit.rigidbody != null)
             {
                 hit.rigidbody.AddForce(-hit.normal * impactForce);
-            }          
+            }
 
             GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
 
             Destroy(impactGO, 2f);
         }
-
     }
 
     IEnumerator OnScoped()
