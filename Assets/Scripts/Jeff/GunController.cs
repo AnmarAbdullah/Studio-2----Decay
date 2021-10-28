@@ -27,8 +27,9 @@ public class GunController : MonoBehaviour
     public GameObject enemyImpactEffect;
     public Animator animator;
     public AudioSource fireSound;
+    public GameObject muzzleFlash;
 
-    public Vector3 normalLocalposition;
+    public Vector3 normalLocalPosition;
     public Vector3 aimingLocalPosition;
 
     public float aimSmoothing = 10;
@@ -61,8 +62,6 @@ public class GunController : MonoBehaviour
         Aim();
         Rotation();
 
-
-
         if (isReloading)
             return;
 
@@ -76,17 +75,6 @@ public class GunController : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.R) && ammoInClip < clipSize && ammoInReserve > 0 || ammoInClip <= 0)
         {
             StartCoroutine(Reload());
-            int amountNeeded = clipSize - ammoInClip;
-            if (amountNeeded >= ammoInReserve)
-            {
-                ammoInClip += ammoInReserve;
-                ammoInReserve -= amountNeeded;
-            }
-            else
-            {
-                ammoInClip = clipSize;
-                ammoInReserve -= amountNeeded;
-            }
         }
     }
 
@@ -106,30 +94,31 @@ public class GunController : MonoBehaviour
     }
     void Aim()
     {
-        Vector3 target = normalLocalposition;
 
         if (isSniper == true && Input.GetButtonDown("Fire2"))
         {
+
             if (!isScoped)
                 StartCoroutine(OnScoped());
             else
                 UnScoped();
-        }
-        if (isSniper == false)
-        {
-            if (Input.GetMouseButton(1)) target = aimingLocalPosition;
 
-            Vector3 desiredPosition = Vector3.Lerp(transform.localPosition, target, Time.deltaTime * aimSmoothing);
-
-            transform.localPosition = desiredPosition;
         }
 
+        Vector3 target = normalLocalPosition;
+        if (isSniper == false && Input.GetMouseButton(1))
+            target = aimingLocalPosition;
+
+        Vector3 desiredPosition = Vector3.Lerp(transform.localPosition, target, Time.deltaTime * aimSmoothing);
+
+        transform.localPosition = desiredPosition;
 
     }
 
+
     void Recoil()
     {
-        if(isSniper == false)
+        if (isSniper == false)
         {
             transform.localPosition -= Vector3.forward * 0.1f;
 
@@ -138,7 +127,7 @@ public class GunController : MonoBehaviour
 
             currentRotation += recoilPattern[currentStep];
         }
-        
+
     }
     IEnumerator Shoot()
     {
@@ -152,7 +141,7 @@ public class GunController : MonoBehaviour
 
     void MuzzleFlash()
     {
-
+        Instantiate(muzzleFlash);
     }
 
     void RaycastToTarget()
@@ -193,6 +182,18 @@ public class GunController : MonoBehaviour
         yield return new WaitForSeconds(.25f);
 
         isReloading = false;
+
+        int amountNeeded = clipSize - ammoInClip;
+        if (amountNeeded >= ammoInReserve)
+        {
+            ammoInClip += ammoInReserve;
+            ammoInReserve -= amountNeeded;
+        }
+        else
+        {
+            ammoInClip = clipSize;
+            ammoInReserve -= amountNeeded;
+        }
     }
 
     IEnumerator OnScoped()
@@ -212,6 +213,7 @@ public class GunController : MonoBehaviour
 
     public void UnScoped()
     {
+
         if (!isScoped)
             return;
 
