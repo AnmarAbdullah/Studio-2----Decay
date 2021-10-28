@@ -51,12 +51,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Horizontal") || Input.GetButtonDown("Vertical") && isGrounded)
         {
             walkingSoundEff.Play();
-            animate.SetBool("Running", true);
+            
         }
         else if(!isGrounded || !Input.GetButton("Horizontal") && !Input.GetButton("Vertical"))
         {
             walkingSoundEff.Stop();
-            animate.SetBool("Running", false);
+            
         }
 
         if (isGrounded && velocity.y < 0)
