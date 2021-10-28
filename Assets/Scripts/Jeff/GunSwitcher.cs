@@ -51,7 +51,7 @@ public class GunSwitcher : MonoBehaviour
             else
             {
                 weapon.gameObject.SetActive(false);
-                weapon.GetComponent<Gun>().UnScoped();
+                weapon.GetComponent<GunController>().UnScoped();
 
             }
                 
