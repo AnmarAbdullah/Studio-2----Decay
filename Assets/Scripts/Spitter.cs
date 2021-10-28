@@ -6,6 +6,7 @@ public class Spitter : Enemy
 {
     public GameObject Projectile;
     bool attacking;
+    
     protected override void Attack()
     {
         if (!attacking)

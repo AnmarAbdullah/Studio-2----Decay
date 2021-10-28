@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - MakeItRainBlood
+  - Incinerator
+  - Spawner
   layers:
   - Default
   - TransparentFX

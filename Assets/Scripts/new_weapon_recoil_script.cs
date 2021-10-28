@@ -48,7 +48,11 @@ public class new_weapon_recoil_script : MonoBehaviour
 
     void Update()
     {
-
+        if (Input.GetButtonDown("Fire1"))
+        {
+            aim = true;
+            Firerecoil();
+        }
     }
     public void Firerecoil()
     {
