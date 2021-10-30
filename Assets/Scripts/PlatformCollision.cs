@@ -14,7 +14,8 @@ public class PlatformCollision : MonoBehaviour
         platform = GetComponentInParent<FourPlatformsTask>();
     }
     private void OnTriggerStay(Collider other)
-   {
+    {
+        Debug.Log("hellooooo");
         if (platform.PlatformIndex == platformInd)
         {
             if (other.gameObject.CompareTag("Player"))
@@ -23,7 +24,7 @@ public class PlatformCollision : MonoBehaviour
                 platform.Meter += testingTimer;
             }
         }
-   }
+    }
 
 
 }

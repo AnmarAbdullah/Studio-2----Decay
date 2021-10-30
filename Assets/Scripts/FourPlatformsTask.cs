@@ -6,20 +6,30 @@ using UnityEngine.UI;
 public class FourPlatformsTask : MonoBehaviour
 {
     public GameObject[] Platforms;
-    public ParticleSystem[] PlatformVisuals;
+    /// public ParticleSystem[] PlatformVisuals;
+    public GameObject[] PlatformVisuals;
+       
     public int PlatformIndex;
     [SerializeField] float switchTimer;
     [SerializeField] float turnTimer;
+    
     public float Meter;
+    float currentMeter;
+    float MAXMeter = 20000;
+
+    public Image MeterUIBackground;
     public Image MeterUI;
     void Start()
     {
         //challengeMeter[challengeMeter.Length] = GetComponent<PlatformCollision>();
         //MeterUI = GetComponent<Image>();
-        MeterUI.gameObject.SetActive(false);
+        //MeterUI = GetComponent<Image>();       
     }
     void Update()
     {
+        currentMeter = Meter;
+        MeterUI.fillAmount = Meter / MAXMeter;
+        
         switchTimer += Time.deltaTime;
         /*if(switchTimer > 10.01f)
         {
@@ -50,15 +60,17 @@ public class FourPlatformsTask : MonoBehaviour
 
     void PlatformTriggered()
     {
-        PlatformVisuals[PlatformIndex].Play();
-        MeterUI.gameObject.SetActive(true);
+        /// PlatformVisuals[PlatformIndex].Play();
+        PlatformVisuals[PlatformIndex].gameObject.SetActive(true);
+        MeterUIBackground.gameObject.SetActive(true);
         Invoke(nameof(PlatformHalt), 13);
     }
     void PlatformHalt()
     {
-        PlatformVisuals[PlatformIndex].Stop();
+        ///PlatformVisuals[PlatformIndex].Stop();
+        PlatformVisuals[PlatformIndex].gameObject.SetActive(false);
         PlatformIndex = 4;
         Debug.Log("hellooo");
-        MeterUI.gameObject.SetActive(false);
+        MeterUIBackground.gameObject.SetActive(false);
     }
 }

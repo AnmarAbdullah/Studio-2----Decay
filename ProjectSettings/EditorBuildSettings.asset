@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Akarsh Scene.unity
     guid: d93dc71a2149bb648afaee4fe18a1fdb
   - enabled: 1
-    path: Assets/Scenes/Main Scene.unity
+    path: Assets/Scenes/Deprecated Main Scene.unity
     guid: 36f7c012b3714f540aebca2063d7f529
   m_configObjects: {}
