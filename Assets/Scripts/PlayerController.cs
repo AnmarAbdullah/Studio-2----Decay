@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : damagePlayer
 {
     public float speed;
     public float gravity = -9.81f;
@@ -166,4 +166,6 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    
 }
