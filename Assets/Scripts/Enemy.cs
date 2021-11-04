@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public float health;
-    public float dmg;
+    public int playerHealth = 300;
+    public int dmg;
 
     public float dist;
     public float range;
@@ -36,6 +36,15 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            playerHealth -= dmg;
+            print("dummy" + playerHealth);
+        }
+
+    }
     protected virtual void LookatPlayer()
     {
         transform.LookAt(player);

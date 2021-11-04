@@ -26,21 +26,17 @@ public class PlayerController : MonoBehaviour
 
     public int ChallengeIndex;
 
-    // Ability Cooldown & amount System------ NEEDS REWORK
-    float healCD = 8;
-    float nextHeal;
+    // Ability Cooldown & amount System------ NEEDS REWORK    
     public float heals;
     public Text healsAmount;
 
-    float GrenadeCD = 1;
-    float nextGrenade;
     public float grenades;
     public Text grenadesAmount;
 
-    public float stunCD = 7;
-    public float nextStun;
+    [SerializeField]float stunCD;
+    bool SonCD;
+    bool isStunning;
     public Image stunCool;
-    public Text stunclDnUI;
     // ------------------------------
 
 
@@ -49,6 +45,9 @@ public class PlayerController : MonoBehaviour
     void Start()
     {       
         walkingSoundEff = GetComponent<AudioSource>();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        stunCool.gameObject.SetActive(false);
     }
     void Update()
     {
@@ -91,47 +90,40 @@ public class PlayerController : MonoBehaviour
 
       // health system :
         StemShot();
-       /* if (Time.time > nextHeal)
+        Stun();
+        
+        if (Input.GetKeyDown(KeyCode.H) & heals > 0)
         {
-            if (Input.GetKeyDown(KeyCode.H) & heals > 0)
-            {
                 isHealing = true;
-                nextHeal = Time.time + healCD;
                 heals--;
-            }
         }
+        
+      
         if (Health >= 300)
         {
             Health = 300;
         }
-       */
-
+       
+        // player abilities UI
         grenadesAmount.text = grenades.ToString();
         healsAmount.text = heals.ToString();
-        stunclDnUI.text = nextStun.ToString();
-
-       // stunCool.fillAmount = nextStun = stunCD;
     }
 
     private void FixedUpdate()
-    {
-        /*if (Time.time > nextGrenade)
+    {      
+        if (Input.GetKeyDown(KeyCode.G) & grenades > 0)
         {
-            if (Input.GetKeyDown(KeyCode.G) & grenades > 0)
-            {
                 ThrowGrenade();
-                nextGrenade = Time.time + GrenadeCD;
                 grenades--;
-            }
-        }
-        if (Time.time > nextStun)
+        }       
+        if (!SonCD)
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
-                Stun();
-                nextStun = Time.time + stunCD;
+                isStunning = true;
+                stunCool.fillAmount = 1;
             }
-        }*/
+        }
     }
     void StemShot() // Ability 1
     {
@@ -143,7 +135,7 @@ public class PlayerController : MonoBehaviour
             {
                 isHealing = false;
                 healingTime = 0;
-            }
+            }                        
         }
     }
 
@@ -156,14 +148,34 @@ public class PlayerController : MonoBehaviour
 
     void Stun() // Ability 3
     {
-        Collider[] collider = Physics.OverlapSphere(transform.position, 10);
-        foreach (Collider near in collider) // (int i=0; i < collider.Length; i++)
+
+        if (isStunning)
         {
-            Rigidbody body = near.GetComponent<Rigidbody>();
-            if (body != null)
+            Collider[] collider = Physics.OverlapSphere(transform.position, 10);
+            foreach (Collider near in collider) // (int i=0; i < collider.Length; i++)
             {
-                body.AddExplosionForce(15, transform.position, 10, 10, ForceMode.Impulse);
+                Rigidbody body = near.GetComponent<Rigidbody>();
+                if (body != null)
+                {
+                    body.AddExplosionForce(15, transform.position, 10, 10, ForceMode.Impulse);
+                }
             }
+            isStunning = false;
+            SonCD = true;
+        }
+        if (SonCD) 
+        {
+            stunCD += Time.deltaTime;
+            stunCool.gameObject.SetActive(true);
+            stunCool.fillAmount -= stunCD / 4000;
+        };
+        if (stunCD >= 8)
+        {
+            SonCD = false;
+            stunCD = 0;
+            stunCool.gameObject.SetActive(false);
         }
     }
+
+    
 }

@@ -7,7 +7,7 @@ public class GunController : MonoBehaviour
     [Header("Gun Settings")]
     public float fireRate = 0.1f;
     public int clipSize = 30;
-    [SerializeField] int ammoInClip;
+   public int ammoInClip;
     public int reservedAmmoCapacity = 270;
     public float impactForce = 100f;
     public float range = 100f;
