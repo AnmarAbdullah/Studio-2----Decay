@@ -3,22 +3,25 @@ using UnityEngine;
 public class GunSwitcher : MonoBehaviour
 {
     public int selectedWeapon = 0;
-
+    public int previousSelectedWeapon;
+    public GunController[] guns;
 
     void Start()
     {
+        guns = GetComponentsInChildren<GunController>(true);
         SelectWeapon();
+
     }
 
 
     void Update()
     {
 
-        int previousSelectedWeapon = selectedWeapon;
+        previousSelectedWeapon = selectedWeapon;
 
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {
-            if (selectedWeapon >= transform.childCount - 1)
+            if (selectedWeapon >= guns.Length - 1)
                 selectedWeapon = 0;
             else
                 selectedWeapon++;
@@ -28,7 +31,7 @@ public class GunSwitcher : MonoBehaviour
         if (Input.GetAxis("Mouse ScrollWheel") < 0f)
         {
             if (selectedWeapon <= 0)
-                selectedWeapon = transform.childCount - 1;
+                selectedWeapon = guns.Length - 1;
             else
                 selectedWeapon--;
         }
@@ -40,23 +43,32 @@ public class GunSwitcher : MonoBehaviour
     }
     void SelectWeapon()
     {
-        int i = 0;
-        foreach (Transform weapon in transform)
+        //int i = 0;
+
+        //foreach (Transform weapon in transform)
+        //{
+        //    if (i == selectedWeapon)
+        //    {
+        //        weapon.gameObject.SetActive(true);
+        //    }
+
+        //    else
+        //    {
+        //        weapon.gameObject.SetActive(false);
+        //        weapon.GetComponent<GunController>().UnScoped();
+        //    } 
+
+        //    i++;
+        //}
+
+        guns[previousSelectedWeapon].gameObject.SetActive(false);
+        guns[selectedWeapon].gameObject.SetActive(true);
+
+        guns[selectedWeapon].currentRotation = guns[previousSelectedWeapon].currentRotation;
+
+        if (guns[selectedWeapon] != GetComponent<GunController>().isSniper)
         {
-            if (i == selectedWeapon)
-            {
-                weapon.gameObject.SetActive(true);
-            }
-
-            else
-            {
-                weapon.gameObject.SetActive(false);
-                weapon.GetComponent<GunController>().UnScoped();
-
-            }
-                
-            i++;
+            GetComponent<GunController>().UnScoped();
         }
-        
     }
 }
