@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 321982223}
   m_Layer: 0
   m_Name: boss
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -266,7 +266,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3299301213414646361, guid: b33f7b5faff0afa46b29e42a828edb0b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1161
+      value: 1169.1
       objectReference: {fileID: 0}
     - target: {fileID: 3299301213414646361, guid: b33f7b5faff0afa46b29e42a828edb0b, type: 3}
       propertyPath: m_LocalPosition.z
