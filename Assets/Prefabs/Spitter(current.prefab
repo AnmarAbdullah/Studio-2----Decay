@@ -124,11 +124,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8ce7df1958f03a4aad451b875ca68a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  playerHealth: 300
   dmg: 0
   dist: 0
-  range: 18.63
-  speed: 0
+  range: 400
+  speed: 6
+  pplayer: {fileID: 0}
+  spawner: {fileID: 0}
   Projectile: {fileID: 6961161351017035448, guid: 47ecd29d8a088664883952eb45214cc2, type: 3}
 --- !u!54 &3723365545187554032
 Rigidbody:

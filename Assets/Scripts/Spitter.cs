@@ -14,9 +14,13 @@ public class Spitter : Enemy
             Rigidbody rb = Instantiate(Projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * 15, ForceMode.Impulse);
 
+            var spits = (GameObject)Instantiate(Projectile, transform.position, Quaternion.identity);
+
             attacking = true;
             Invoke(nameof(ResetAttack), 1);
+            Destroy(spits, 2);
         }
+       // Destroy(spits, 3);
     }
     protected override void Behavior()
     {
