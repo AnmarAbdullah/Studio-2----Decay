@@ -129,7 +129,7 @@
       }
     },
     "com.unity.render-pipelines.high-definition-config": {
-      "version": "file:D:\\College projects\\GDS212\\Studio-2----Decay\\LocalPackages\\com.unity.render-pipelines.high-definition-config",
+      "version": "file:../LocalPackages/com.unity.render-pipelines.high-definition-config",
       "depth": 0,
       "source": "local",
       "dependencies": {
