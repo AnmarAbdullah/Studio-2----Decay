@@ -5,6 +5,14 @@ using UnityEngine;
 public class Target : MonoBehaviour
 {
     public float health = 50;
+    public bool isDead;
+    Animator anim;
+    [SerializeField]int randomDeath;
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
 
     public void TakeDamage(float amount)
     {
@@ -16,6 +24,18 @@ public class Target : MonoBehaviour
     }
     void Die()
     {
-        Destroy(gameObject);
+        isDead = true;
+        randomDeath = Random.Range(1, 3);
+        //GetComponent<Enemy>().speed = 0;
+        GetComponent<Rigidbody>().isKinematic = true;
+        if (isDead && randomDeath == 1)
+        {
+            anim.SetBool("isDeadFront", true);
+        }
+        if (isDead && randomDeath == 2)
+        {
+            anim.SetBool("isDeadBack", true);
+        }
+        Destroy(gameObject, 10);
     }
 }

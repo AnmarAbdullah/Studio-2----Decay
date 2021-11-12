@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
 
     bool isDead;
 
-    Transform player;
+    public Transform player;
     public PlayerController pplayer;
     public Spawner spawner;
     void Start()
@@ -47,7 +47,10 @@ public class Enemy : MonoBehaviour
     }
     protected virtual void LookatPlayer()
     {
-        transform.LookAt(player);
+        if (GetComponent<Target>().isDead == false)
+        {
+            transform.LookAt(player);
+        }
     }
     protected virtual void Behavior()
     {

@@ -7,7 +7,7 @@ TagManager:
   - MakeItRainBlood
   - Incinerator
   - Spawner
-  - Sniper
+  - ground
   layers:
   - Default
   - TransparentFX

@@ -70,7 +70,7 @@ public class FourPlatformsTask : MonoBehaviour
         ///PlatformVisuals[PlatformIndex].Stop();
         PlatformVisuals[PlatformIndex].gameObject.SetActive(false);
         PlatformIndex = 4;
-        Debug.Log("hellooo");
+        //Debug.Log("hellooo");
         MeterUIBackground.gameObject.SetActive(false);
     }
 }
