@@ -95,7 +95,10 @@ public class GunController : MonoBehaviour
                 ammoInReserve -= amountNeeded;
             }
         }
+        
     }
+
+    
 
     void Rotation()
     {
@@ -141,8 +144,8 @@ public class GunController : MonoBehaviour
         {
             
             crosshair.SetActive(true);
+            
         }
-
 
 
         Vector3 desiredPosition = Vector3.Lerp(transform.localPosition, target, Time.deltaTime * aimSmoothing);
@@ -150,7 +153,12 @@ public class GunController : MonoBehaviour
         float povDesiredPosition = Mathf.Lerp(Camera.main.fieldOfView, fovTarget, Time.deltaTime * aimSmoothing);
 
         transform.localPosition = desiredPosition;
-        Camera.main.fieldOfView = povDesiredPosition;
+
+        if (isSniper == false)
+        {
+            Camera.main.fieldOfView = povDesiredPosition;         
+        }
+        
 
         
 
