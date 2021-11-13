@@ -7,23 +7,22 @@ using UnityEngine.Audio;
 public class settingsMenu : MonoBehaviour
 {
     public AudioMixer audiomixer;
-    Resolution[] resolutions;
+    Resolution[] resolution;
     public Dropdown resolutionDropDown;
-     void Start()
+    object Start()
     {
-        resolutions = Screen.resolutions;
+        resolution = Screen.resolutions;
         resolutionDropDown.ClearOptions();
         List<string> options = new List<string>();
         int currentResolutionIndex =0;
-        for (int i = 0; i < resolutions.Length; i++)
+        for (int i = 0; i < resolution.Length; i++)
         {
-            string option resolutions[i].width  "x" * resolutions[i].height;
-            options.Add(option);
-            if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
+            string option int width = resolution[i].width; object p = "x" * resolution[i].height;
+            options.Add(item: option);
+            if (resolution[i].width == Screen.currentResolution.width && resolution[i].height == Screen.currentResolution.height)
             {
                 currentResolutionIndex = i;
             }
-        
 
         }
         resolutionDropDown.AddOptions(options);
