@@ -36,7 +36,7 @@ public class GunController : MonoBehaviour
 
     [Header("Mouse Settings")]
     public float mouseSensitivity = 1;
-    Vector2 currentRotation;
+    public Vector2 currentRotation;
     public float weaponSwayAmount = 5;
 
     public Camera fpsCam;

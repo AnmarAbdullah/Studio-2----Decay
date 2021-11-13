@@ -64,8 +64,5 @@ public class GunSwitcher : MonoBehaviour
         //{
         //    GetComponent<GunController>().UnScoped();
         //}
-
-
-
     }
 }

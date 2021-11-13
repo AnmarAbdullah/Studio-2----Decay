@@ -8,6 +8,8 @@ TagManager:
   - Incinerator
   - Spawner
   - ground
+  - Sniper
+  - Zombie
   layers:
   - Default
   - TransparentFX

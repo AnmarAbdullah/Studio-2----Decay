@@ -6,7 +6,21 @@ public class Spitter : Enemy
 {
     public GameObject Projectile;
     bool attacking;
-    
+    Animator anim;
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
+    protected override void LookatPlayer()
+    {
+        transform.LookAt(player);
+        if (dist >= 8)
+        {
+            transform.Translate(Vector3.forward * 10 * Time.deltaTime);
+            anim.SetInteger("State", 0);
+        }
+    }
     protected override void Attack()
     {
         if (!attacking)
@@ -14,11 +28,10 @@ public class Spitter : Enemy
             Rigidbody rb = Instantiate(Projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * 15, ForceMode.Impulse);
 
-            var spits = (GameObject)Instantiate(Projectile, transform.position, Quaternion.identity);
-
+            anim.SetInteger("State", 2);
             attacking = true;
-            Invoke(nameof(ResetAttack), 1);
-            Destroy(spits, 2);
+            Invoke(nameof(ResetAttack), 2);
+            //Destroy(spits, 2);
         }
        // Destroy(spits, 3);
     }
@@ -27,6 +40,7 @@ public class Spitter : Enemy
         if(dist <= 7)
         {
             transform.Translate(Vector3.back * 10 * Time.deltaTime);
+            anim.SetInteger("State", 1);
         }
     }
     private void ResetAttack()

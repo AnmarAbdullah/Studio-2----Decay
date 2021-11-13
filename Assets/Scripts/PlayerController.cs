@@ -124,6 +124,12 @@ public class PlayerController : MonoBehaviour
                 stunCool.fillAmount = 1;
             }
         }
+        Vector3 playerPos = transform.position;
+        if(Health <= 0 || playerPos.y < -20)
+        {
+            Health = 300;
+            transform.position= new Vector3(15,15,25);
+        }
     }
     void StemShot() // Ability 1
     {
@@ -176,6 +182,4 @@ public class PlayerController : MonoBehaviour
             stunCool.gameObject.SetActive(false);
         }
     }
-
-    
 }
