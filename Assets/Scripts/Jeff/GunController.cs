@@ -1,12 +1,13 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class GunController : MonoBehaviour
 {
     [Header("Gun Settings")]
     public float fireRate = 0.1f;
     public int clipSize = 30;
-    [SerializeField] public int ammoInClip;
+   public int ammoInClip;
     public int reservedAmmoCapacity = 270;
     public float impactForce = 100f;
     public float range = 100f;
@@ -23,14 +24,17 @@ public class GunController : MonoBehaviour
 
     public GameObject scopeOverlay;
     public GameObject crosshair;
-    public GameObject weaponCamera;
+    //public GameObject weaponCamera;
     public GameObject enemyImpactEffect;
     public Animator animator;
     public AudioSource fireSound;
-    public GameObject muzzleFlash;
+    
+    public VisualEffect muzzleFlash;
 
     public Vector3 normalLocalPosition;
     public Vector3 aimingLocalPosition;
+    public float normalFOVPosition;
+    public float desiredFOVPosition;
 
     public float aimSmoothing = 10;
 
@@ -50,12 +54,15 @@ public class GunController : MonoBehaviour
         ammoInReserve = reservedAmmoCapacity;
         canShoot = true;
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        
     }
 
     private void OnEnable()
     {
         isReloading = false;
         animator.SetBool("Reloading", false);
+        
     }
     private void Update()
     {
@@ -75,8 +82,23 @@ public class GunController : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.R) && ammoInClip < clipSize && ammoInReserve > 0 || ammoInClip <= 0)
         {
             StartCoroutine(Reload());
+
+            int amountNeeded = clipSize - ammoInClip;
+            if (amountNeeded >= ammoInReserve)
+            {
+                ammoInClip += ammoInReserve;
+                ammoInReserve -= amountNeeded;
+            }
+            else
+            {
+                ammoInClip = clipSize;
+                ammoInReserve -= amountNeeded;
+            }
         }
+        
     }
+
+    
 
     void Rotation()
     {
@@ -90,7 +112,7 @@ public class GunController : MonoBehaviour
         transform.localPosition += (Vector3)mouseAxis * weaponSwayAmount / 1000;
 
         transform.root.localRotation = Quaternion.AngleAxis(currentRotation.x, Vector3.up);
-        transform.parent.localRotation = Quaternion.AngleAxis(-currentRotation.y, Vector3.right);
+        transform.parent.parent.localRotation = Quaternion.AngleAxis(-currentRotation.y, Vector3.right);
     }
     void Aim()
     {
@@ -104,14 +126,41 @@ public class GunController : MonoBehaviour
                 UnScoped();
 
         }
-
+        
         Vector3 target = normalLocalPosition;
+        float fovTarget = normalFOVPosition;
+        
+
         if (isSniper == false && Input.GetMouseButton(1))
+        {
             target = aimingLocalPosition;
+            fovTarget = desiredFOVPosition;
+            //fpsCam.fieldOfView = scopedFOV;
+            crosshair.SetActive(false);
+
+        }
+
+        if (isSniper == false && Input.GetMouseButtonUp(1))
+        {
+            
+            crosshair.SetActive(true);
+            
+        }
+
 
         Vector3 desiredPosition = Vector3.Lerp(transform.localPosition, target, Time.deltaTime * aimSmoothing);
 
+        float povDesiredPosition = Mathf.Lerp(Camera.main.fieldOfView, fovTarget, Time.deltaTime * aimSmoothing);
+
         transform.localPosition = desiredPosition;
+
+        if (isSniper == false)
+        {
+            Camera.main.fieldOfView = povDesiredPosition;         
+        }
+        
+
+        
 
     }
 
@@ -141,7 +190,7 @@ public class GunController : MonoBehaviour
 
     void MuzzleFlash()
     {
-        Instantiate(muzzleFlash);
+        muzzleFlash.Play();
     }
 
     void RaycastToTarget()
@@ -183,17 +232,7 @@ public class GunController : MonoBehaviour
 
         isReloading = false;
 
-        int amountNeeded = clipSize - ammoInClip;
-        if (amountNeeded >= ammoInReserve)
-        {
-            ammoInClip += ammoInReserve;
-            ammoInReserve -= amountNeeded;
-        }
-        else
-        {
-            ammoInClip = clipSize;
-            ammoInReserve -= amountNeeded;
-        }
+        
     }
 
     IEnumerator OnScoped()
