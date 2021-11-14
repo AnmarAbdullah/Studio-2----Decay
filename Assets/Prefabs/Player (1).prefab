@@ -691,7 +691,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3299301213423637114}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.65999997, z: 0.22000122}
+  m_LocalPosition: {x: 0, y: 0.6600001, z: 0.22000122}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7377494893629882048}
@@ -931,7 +931,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7377494893629882051}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1069,14 +1069,13 @@ MonoBehaviour:
   isSniper: 0
   scopeOverlay: {fileID: 0}
   crosshair: {fileID: 0}
+  weaponCamera: {fileID: 0}
   enemyImpactEffect: {fileID: 7220445590226534527, guid: 0438351a6e6422d43a09930e9be00ee9, type: 3}
   animator: {fileID: 7377494893629882049}
   fireSound: {fileID: 0}
   muzzleFlash: {fileID: 1424691910434747150}
   normalLocalPosition: {x: 0.1644745, y: -0.1414499, z: 0.318985}
   aimingLocalPosition: {x: 0, y: -0.11, z: 0.31899}
-  normalFOVPosition: 70
-  desiredFOVPosition: 40
   aimSmoothing: 10
   mouseSensitivity: 1
   currentRotation: {x: 0, y: 0}
@@ -1214,14 +1213,13 @@ MonoBehaviour:
   isSniper: 1
   scopeOverlay: {fileID: 0}
   crosshair: {fileID: 0}
+  weaponCamera: {fileID: 0}
   enemyImpactEffect: {fileID: 7220445590226534527, guid: 0438351a6e6422d43a09930e9be00ee9, type: 3}
   animator: {fileID: 6011520525860493755}
   fireSound: {fileID: 0}
   muzzleFlash: {fileID: 1424691910777207003}
   normalLocalPosition: {x: 0.1644745, y: -0.14055, z: 0.3108063}
   aimingLocalPosition: {x: 0, y: -0.11, z: 0.31899}
-  normalFOVPosition: 70
-  desiredFOVPosition: 15
   aimSmoothing: 10
   mouseSensitivity: 1
   currentRotation: {x: 0, y: 0}
@@ -1359,14 +1357,13 @@ MonoBehaviour:
   isSniper: 0
   scopeOverlay: {fileID: 0}
   crosshair: {fileID: 0}
+  weaponCamera: {fileID: 0}
   enemyImpactEffect: {fileID: 7220445590226534527, guid: 0438351a6e6422d43a09930e9be00ee9, type: 3}
   animator: {fileID: 6011520526283661007}
   fireSound: {fileID: 0}
   muzzleFlash: {fileID: 1424691911046322106}
   normalLocalPosition: {x: 0.249, y: -0.14556, z: 0.3391}
   aimingLocalPosition: {x: 0, y: -0.075, z: 0.3391}
-  normalFOVPosition: 70
-  desiredFOVPosition: 60
   aimSmoothing: 10
   mouseSensitivity: 1
   currentRotation: {x: 0, y: 0}
@@ -1504,14 +1501,13 @@ MonoBehaviour:
   isSniper: 0
   scopeOverlay: {fileID: 0}
   crosshair: {fileID: 0}
+  weaponCamera: {fileID: 0}
   enemyImpactEffect: {fileID: 7220445590226534527, guid: 0438351a6e6422d43a09930e9be00ee9, type: 3}
   animator: {fileID: 6011520526393223132}
   fireSound: {fileID: 0}
   muzzleFlash: {fileID: 1424691912058069742}
   normalLocalPosition: {x: 0.202, y: -0.157, z: 0.355}
   aimingLocalPosition: {x: 0, y: -0.13, z: 0.355}
-  normalFOVPosition: 70
-  desiredFOVPosition: 50
   aimSmoothing: 10
   mouseSensitivity: 1
   currentRotation: {x: 0, y: 0}

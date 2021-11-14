@@ -6,7 +6,7 @@ using UnityEngine.Audio;
 
 public class settingsMenu : MonoBehaviour
 {
-    public AudioMixer audiomixer;
+   /* public AudioMixer audiomixer;
     Resolution[] resolution;
     public Dropdown resolutionDropDown;
     object Start()
@@ -44,5 +44,5 @@ public class settingsMenu : MonoBehaviour
     public void SetQuality (int qualityIndex)
     {
         QualitySettings.SetQualityLevel(qualityIndex);
-    }
+    }*/
 }
