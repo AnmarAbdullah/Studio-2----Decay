@@ -1,16 +1,20 @@
 using UnityEngine;
+using System.Collections;
 
 public class GunSwitcher : MonoBehaviour
 {
     public int selectedWeapon = 0;
     public int previousSelectedWeapon;
     public GunController[] guns;
+    
+    
+    
 
     void Start()
     {
         guns = GetComponentsInChildren<GunController>(true);
         SelectWeapon();
-
+        
     }
 
 
@@ -43,32 +47,25 @@ public class GunSwitcher : MonoBehaviour
     }
     void SelectWeapon()
     {
-        //int i = 0;
-
-        //foreach (Transform weapon in transform)
-        //{
-        //    if (i == selectedWeapon)
-        //    {
-        //        weapon.gameObject.SetActive(true);
-        //    }
-
-        //    else
-        //    {
-        //        weapon.gameObject.SetActive(false);
-        //        weapon.GetComponent<GunController>().UnScoped();
-        //    } 
-
-        //    i++;
-        //}
+        //bool sniper = GameObject.FindGameObjectWithTag("Sniper");
 
         guns[previousSelectedWeapon].gameObject.SetActive(false);
         guns[selectedWeapon].gameObject.SetActive(true);
 
         guns[selectedWeapon].currentRotation = guns[previousSelectedWeapon].currentRotation;
 
-        if (guns[selectedWeapon] != GetComponent<GunController>().isSniper)
+        if (guns[selectedWeapon].name.Contains("sniper1") == false)
         {
             GetComponent<GunController>().UnScoped();
+            GetComponent<GunController>().scopeOverlay.SetActive(false);
         }
+
+        //if (sniper == false)
+        //{
+        //    GetComponent<GunController>().UnScoped();
+        //}
+
+
+
     }
 }
