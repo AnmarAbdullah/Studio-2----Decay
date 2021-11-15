@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public float dmg;
+    public int playerHealth = 300;
+    public int dmg;
 
     public float dist;
     public float range;
@@ -16,33 +17,34 @@ public class Enemy : MonoBehaviour
     public Transform player;
     public PlayerController pplayer;
     public Spawner spawner;
-
-    public Animator anim;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         pplayer = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         spawner = GameObject.FindGameObjectWithTag("Spawner").GetComponent<Spawner>();
-        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
         dist = Vector3.Distance(transform.position, player.position);
-        if(dist <= range && GetComponent<Target>().isDead == false)
+        if(dist <= range)
         {
             LookatPlayer();
             Behavior();
             Attack();
         }
-        if(dist <= 1.5)
-        {
-            pplayer.Health -= dmg;
-        }
     }
 
-    
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            playerHealth -= dmg;
+            print("dummy" + playerHealth);
+        }
+
+    }
     protected virtual void LookatPlayer()
     {
         if (GetComponent<Target>().isDead == false)
@@ -56,5 +58,4 @@ public class Enemy : MonoBehaviour
     protected virtual void Attack()
     {
     }
-
 }

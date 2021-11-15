@@ -9,12 +9,6 @@ public class Zombie : Enemy
     private void Start()
     {
         anim = GetComponent<Animator>();
-        
-        
-           /* player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-            pplayer = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-            spawner = GameObject.FindGameObjectWithTag("Spawner").GetComponent<Spawner>();*/
-        
     }
     protected override void Behavior()
     {

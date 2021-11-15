@@ -24,7 +24,6 @@ public class Target : MonoBehaviour
     }
     void Die()
     {
-        //anim.SetInteger("State", 3);
         isDead = true;
         randomDeath = Random.Range(1, 3);
         //GetComponent<Enemy>().speed = 0;
@@ -36,10 +35,6 @@ public class Target : MonoBehaviour
         if (isDead && randomDeath == 2)
         {
             anim.SetBool("isDeadBack", true);
-        }
-        if (isDead)
-        {
-            anim.SetInteger("State", 3);
         }
         Destroy(gameObject, 10);
     }

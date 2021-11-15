@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - MakeItRainBlood
+  - Incinerator
+  - Spawner
+  - ground
   layers:
   - Default
   - TransparentFX
@@ -11,10 +15,10 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - Guns
+  - MakeItRainBlood
+  - PP
   - 
   - 
   - 
