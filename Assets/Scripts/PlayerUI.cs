@@ -5,65 +5,67 @@ using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
 {
-    //float currentMeter;
-   // float MAXMeter = 20000;
     
     float currentHealth;
     float MaxHealth = 300;
 
-    //[SerializeField]int gunIndex;
 
-   // public Image MeterUI;
     public Image HealthUI;
+    public RawImage healthWarn;
+    public Image lowHealthOverlay;
+    public float timer;
     
-    //public Image[] chosenGun;
 
-    //public GunSwitcher gunChosen;
     [SerializeField] PlayerController player;
-   // [SerializeField] FourPlatformsTask meter;
-   // GunSwitcher switcher;
 
 
     void Start()
-    {
-        //MeterUI = GetComponent<Image>();
+    {;
         HealthUI = GetComponent<Image>();
-
-        // switcher = FindObjectOfType<GunSwitcher>();
-
-       // gunChosen = FindObjectOfType<GunSwitcher>();
-        //meter = FindObjectOfType<FourPlatformsTask>();
         player = FindObjectOfType<PlayerController>();
     }
 
     void Update()
     {
-        //gunIndex = gunChosen.selectedWeapon;
-        
-        
-        /*currentMeter = meter.Meter;
-        MeterUI.fillAmount = 0.084f;*/
-
         currentHealth = player.Health;
         HealthUI.fillAmount = currentHealth / MaxHealth;
 
-        /*switch (gunIndex)
+        /*if(currentHealth<= 170)
         {
-            case 0:
-                chosenGun[gunIndex].gameObject.SetActive(true);
-                break;
-            case 1:
-                chosenGun[gunIndex].gameObject.SetActive(true);
-                break;
-            case 2:
-                chosenGun[gunIndex].gameObject.SetActive(true);
-                break;
-            case 3:
-                chosenGun[gunIndex].gameObject.SetActive(true);
-                break;
-            default:
-                    chosenGun[chosenGun.Length].gameObject.SetActive(false);
-                break;
+            timer += Time.deltaTime;
+            if (timer <= 2)
+            {
+
+            }
+        }*/
+        if (player.Health <= 150/*player.Health / 2*/)
+        {
+            Warning();
+        }
+        else if (healthWarn.enabled && lowHealthOverlay.enabled)
+        {
+            healthWarn.gameObject.SetActive(false);
+            lowHealthOverlay.gameObject.SetActive(false);
+        }
+
+    }
+
+    public void Warning()
+    {
+        lowHealthOverlay.gameObject.SetActive(true);
+        timer += Time.deltaTime;
+        if (timer >= 0.5f)
+        {
+            healthWarn.gameObject.SetActive(true);
+        }
+        if (timer >= 1)
+        {
+            healthWarn.gameObject.SetActive(false);
+            timer = 0;
+        }
+        /*else
+        {
+            timer = 0;
         }*/
     }
 }

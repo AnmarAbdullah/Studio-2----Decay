@@ -83,7 +83,6 @@ public class PlayerController : MonoBehaviour
         {
            velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
         }
-
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
@@ -110,7 +109,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void FixedUpdate()
-    {      
+    {
         if (Input.GetKeyDown(KeyCode.G) & grenades > 0)
         {
                 ThrowGrenade();
@@ -128,7 +127,7 @@ public class PlayerController : MonoBehaviour
         if(Health <= 0 || playerPos.y < -20)
         {
             Health = 300;
-            transform.position= new Vector3(15,15,25);
+            transform.position= new Vector3(75,30,70);
         }
     }
     void StemShot() // Ability 1
@@ -148,7 +147,8 @@ public class PlayerController : MonoBehaviour
     void ThrowGrenade() // Ability 2
     {
         Rigidbody rb = Instantiate(Grenade, camera.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-        rb.AddForce(transform.forward * 25, ForceMode.Impulse);
+        rb.AddForce(camera.transform.forward * 15, ForceMode.Impulse);
+        Debug.Log("NBAyoungboy"); 
     }
 
 

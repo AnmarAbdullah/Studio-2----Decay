@@ -12,20 +12,24 @@ public class Spawner : Enemy
     public float nextEnemy = 3;
     public int myChallengeIndex;
 
-    protected override void Behavior()
+    protected override void spawnEnemies()
     {
-        enemyTimer += Time.deltaTime;
-        if (enemyTimer > nextEnemy && myChallengeIndex == pplayer.ChallengeIndex)
+        Debug.Log("Sspawninggg");
+        //enemyTimer += Time.deltaTime;
+        if (myChallengeIndex == pplayer.ChallengeIndex)
         {
-            Rigidbody rb = Instantiate(Enemies[Random.Range(0, Enemies.Length)], transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            enemyTimer = 0;
-        }
-        enemyTimer += Time.deltaTime;
-        timer += Time.deltaTime;
-        if (timer > nextSpawn && myChallengeIndex == pplayer.ChallengeIndex)
-        {
-            Rigidbody rb = Instantiate(Zombie, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            timer = 0;
+            enemyTimer += Time.deltaTime;
+            if (enemyTimer > nextEnemy)
+            {
+                Rigidbody rb = Instantiate(Enemies[Random.Range(0, Enemies.Length)], transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+                enemyTimer = 0;
+            }
+            timer += Time.deltaTime;
+            if (timer > nextSpawn && myChallengeIndex == pplayer.ChallengeIndex)
+            {
+                Rigidbody rb = Instantiate(Zombie, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+                timer = 0;
+            }
         }
     }
 }

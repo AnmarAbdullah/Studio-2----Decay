@@ -1622,11 +1622,11 @@ MonoBehaviour:
   dist: 0
   range: 1000
   speed: 10
-  player: {fileID: 0}
+  Player: {fileID: 0}
   pplayer: {fileID: 0}
   spawner: {fileID: 0}
   anim: {fileID: 0}
-  Projectile: {fileID: 0}
+  Projectile: {fileID: 6961161351017035448, guid: 47ecd29d8a088664883952eb45214cc2, type: 3}
 --- !u!136 &7295094610527822040
 CapsuleCollider:
   m_ObjectHideFlags: 0

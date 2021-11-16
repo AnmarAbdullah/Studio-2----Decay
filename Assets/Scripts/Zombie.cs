@@ -9,12 +9,9 @@ public class Zombie : Enemy
     private void Start()
     {
         anim = GetComponent<Animator>();
-        
-        
-           /* player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-            pplayer = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-            spawner = GameObject.FindGameObjectWithTag("Spawner").GetComponent<Spawner>();*/
-        
+
+        this.Player = GameObject.FindWithTag("Player").transform;
+        this.pplayer = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
     }
     protected override void Behavior()
     {
@@ -24,7 +21,7 @@ public class Zombie : Enemy
         {
             anim.SetBool("isAttacking", true);
             anim.SetBool("isChasing", false);
-            speed = 1;
+            speed = 0.5f;
         }
         else
         {

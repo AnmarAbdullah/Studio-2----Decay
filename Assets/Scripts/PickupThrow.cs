@@ -11,6 +11,12 @@ public class PickupThrow : MonoBehaviour
     [SerializeField] bool touched;
     public float throwforce;
 
+    private void Start()
+    {
+        this.Player = GameObject.FindWithTag("Player").transform;
+        playerCam = Camera.main.transform;
+    }
+
     void Update()
     {
         float dist = Vector3.Distance(gameObject.transform.position, Player.position);

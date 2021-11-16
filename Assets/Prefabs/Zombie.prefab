@@ -1378,7 +1378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f8526e2e14dfeb449d6c5afd4afc6ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  health: 30
   isDead: 0
   randomDeath: 0
 --- !u!54 &9112817951462644335
@@ -1423,14 +1423,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e4281fd63a81ca46b34c2ef1eae5261, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: 300
   dmg: 0
   dist: 0
   range: 1000
   speed: 8
-  player: {fileID: 0}
+  Player: {fileID: 0}
   pplayer: {fileID: 0}
   spawner: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &4762182351983072493
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,8 @@ public class FourPlatformsTask : MonoBehaviour
     public GameObject[] Platforms;
     /// public ParticleSystem[] PlatformVisuals;
     public GameObject[] PlatformVisuals;
+
+    public PlayerController player;
        
     public int PlatformIndex;
     [SerializeField] float switchTimer;
@@ -21,56 +23,54 @@ public class FourPlatformsTask : MonoBehaviour
     public Image MeterUI;
     void Start()
     {
-        //challengeMeter[challengeMeter.Length] = GetComponent<PlatformCollision>();
-        //MeterUI = GetComponent<Image>();
-        //MeterUI = GetComponent<Image>();       
+        this.player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
     }
     void Update()
     {
-        currentMeter = Meter;
-        MeterUI.fillAmount = Meter / MAXMeter;
-        
-        switchTimer += Time.deltaTime;
-        /*if(switchTimer > 10.01f)
+        if (player.ChallengeIndex == 1 /*&& Meter <= 20000*/)
         {
-            switchTimer = 0;
-        }*/
-        if (switchTimer >= 16)
-        {
-            PlatformIndex = Random.Range(0, Platforms.Length);
-            var PlatformNumber = PlatformIndex;
-            switchTimer = 0;
-            switch (PlatformIndex)
+            currentMeter = Meter;
+            MeterUI.fillAmount = Meter / MAXMeter;
+            switchTimer += Time.deltaTime;
+            if (switchTimer >= 18)
             {
-                case 0:
-                    PlatformTriggered();
-                    break;
-                case 1:
-                    PlatformTriggered();
-                    break;
-                case 2:
-                    PlatformTriggered();
-                    break;
-                case 3:
-                    PlatformTriggered();
-                    break;
+                PlatformIndex = Random.Range(0, Platforms.Length);
+                var PlatformNumber = PlatformIndex;
+                switchTimer = 0;
+                switch (PlatformIndex)
+                {
+                    case 0:
+                        PlatformTriggered();
+                        break;
+                    case 1:
+                        PlatformTriggered();
+                        break;
+                    case 2:
+                        PlatformTriggered();
+                        break;
+                    case 3:
+                        PlatformTriggered();
+                        break;
+                }
             }
         }
+        if(Meter >= 20000) MeterUIBackground.gameObject.SetActive(false);
     }
 
     void PlatformTriggered()
     {
         /// PlatformVisuals[PlatformIndex].Play();
-        PlatformVisuals[PlatformIndex].gameObject.SetActive(true);
-        MeterUIBackground.gameObject.SetActive(true);
-        Invoke(nameof(PlatformHalt), 13);
+        
+            PlatformVisuals[PlatformIndex].gameObject.SetActive(true);
+            MeterUIBackground.gameObject.SetActive(true);
+        
+        Invoke(nameof(PlatformHalt), 12);
     }
     void PlatformHalt()
     {
         ///PlatformVisuals[PlatformIndex].Stop();
         PlatformVisuals[PlatformIndex].gameObject.SetActive(false);
         PlatformIndex = 4;
-        //Debug.Log("hellooo");
         MeterUIBackground.gameObject.SetActive(false);
     }
 }

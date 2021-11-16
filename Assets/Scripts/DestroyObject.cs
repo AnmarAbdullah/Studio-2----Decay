@@ -8,7 +8,7 @@ public class DestroyObject : MonoBehaviour
     {
         Destroy(transform.gameObject, 4);
     }
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
@@ -16,5 +16,5 @@ public class DestroyObject : MonoBehaviour
             Destroy(transform.gameObject);
             Debug.Log("htting.....");
         }
-    }
+    }*/
 }

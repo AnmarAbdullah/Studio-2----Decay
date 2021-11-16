@@ -13,23 +13,26 @@ public class Enemy : MonoBehaviour
 
     bool isDead;
 
-    public Transform player;
+    public Transform Player;
     public PlayerController pplayer;
     public Spawner spawner;
-
     public Animator anim;
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+       /*player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         pplayer = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        spawner = GameObject.FindGameObjectWithTag("Spawner").GetComponent<Spawner>();
+        spawner = GameObject.FindGameObjectWithTag("Spawner").GetComponent<Spawner>();*/
+        this.Player = GameObject.FindWithTag("Player").transform;
+        this.pplayer = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+        
+
         anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        dist = Vector3.Distance(transform.position, player.position);
+        dist = Vector3.Distance(transform.position, Player.position);
         if(dist <= range && GetComponent<Target>().isDead == false)
         {
             LookatPlayer();
@@ -40,6 +43,11 @@ public class Enemy : MonoBehaviour
         {
             pplayer.Health -= dmg;
         }
+        if (dist <= range)
+        {
+            spawnEnemies();
+        }
+        spawnEnemies();
     }
 
     
@@ -47,13 +55,16 @@ public class Enemy : MonoBehaviour
     {
         if (GetComponent<Target>().isDead == false)
         {
-            transform.LookAt(player);
+            transform.LookAt(Player);
         }
     }
     protected virtual void Behavior()
     {
     }
     protected virtual void Attack()
+    {
+    }
+    protected virtual void spawnEnemies()
     {
     }
 

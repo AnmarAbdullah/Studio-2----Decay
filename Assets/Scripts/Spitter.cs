@@ -10,11 +10,17 @@ public class Spitter : Enemy
 
     private void Start()
     {
+      
+        
         anim = GetComponent<Animator>();
+
+         this.Player = GameObject.FindWithTag("Player").transform;
+         this.pplayer = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+        
     }
     protected override void LookatPlayer()
     {
-        transform.LookAt(player);
+        transform.LookAt(Player);
         if (dist >= 8)
         {
             transform.Translate(Vector3.forward * 10 * Time.deltaTime);
