@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 930400494500585230}
   - component: {fileID: 9196050636912959440}
   - component: {fileID: -9158233393966234793}
+  - component: {fileID: 4779460140997033411}
   m_Layer: 0
   m_Name: Spitter spit
   m_TagString: Untagged
@@ -113,3 +114,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4779460140997033411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6961161351017035448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc91e7782178ec24b9ec10c7af597e2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

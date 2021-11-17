@@ -124,11 +124,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e4281fd63a81ca46b34c2ef1eae5261, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  playerHealth: 300
   dmg: 0
   dist: 0
-  range: 30.4
-  speed: 0
+  range: 300
+  speed: 7
+  pplayer: {fileID: 0}
+  spawner: {fileID: 0}
 --- !u!54 &6349200755527760147
 Rigidbody:
   m_ObjectHideFlags: 0
