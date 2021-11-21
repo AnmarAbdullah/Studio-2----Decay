@@ -77,7 +77,7 @@ public class GunController : MonoBehaviour
         if (isReloading)
             return;
 
-        reservedAmmoCapacity = ammoInReserve;
+
         if (Input.GetMouseButton(0) && canShoot && ammoInClip > 0)
         {
             canShoot = false;
@@ -87,13 +87,12 @@ public class GunController : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.R) && ammoInClip < clipSize && ammoInReserve > 0 || ammoInClip <= 0)
         {
             StartCoroutine(Reload());
-            
+
             int amountNeeded = clipSize - ammoInClip;
             if (amountNeeded >= ammoInReserve)
             {
                 ammoInClip += ammoInReserve;
-                ammoInReserve = 0 ;
-
+                ammoInReserve -= amountNeeded;
             }
             else
             {
