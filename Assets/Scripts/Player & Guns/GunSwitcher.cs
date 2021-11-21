@@ -57,7 +57,7 @@ public class GunSwitcher : MonoBehaviour
         if (guns[selectedWeapon].name.Contains("sniper1") == false)
         {
             GetComponent<GunController>().UnScoped();
-            GetComponent<GunController>().scopeOverlay.SetActive(false);
+            //GetComponent<GunController>().scopeOverlay.SetActive(false);
         }
 
         //if (sniper == false)
