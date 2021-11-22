@@ -8,6 +8,7 @@ public class Target : MonoBehaviour
     public bool isDead;
     Animator anim;
     [SerializeField]int randomDeath;
+   // Spawner spawner;
 
     public GameObject ammo;
     int randomAmmoDrop;
@@ -15,6 +16,7 @@ public class Target : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
+        //spawner = GetComponent<Spawner>();
     }
 
     public void TakeDamage(float amount)
@@ -26,7 +28,7 @@ public class Target : MonoBehaviour
             randomAmmoDrop = Random.Range(3, 6);
             //if (randomAmmoDrop <= 3)
             //{
-                DropAmmo();
+                //DropAmmo();
             //}
         }
     }
@@ -45,10 +47,12 @@ public class Target : MonoBehaviour
             anim.SetBool("isDeadBack", true);
         }
         Destroy(gameObject, 10);
+        anim.SetBool("Dead", true);
+        //spawner.zombieLimit--;
     }
 
-    void DropAmmo()
+    /*void DropAmmo()
     {
         GameObject Ammo = Instantiate(ammo, transform.position, Quaternion.identity);
-    }
+    }*/
 }
