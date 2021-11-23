@@ -24,9 +24,9 @@ public class DefendObject : MonoBehaviour
 
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision collision)
     {
-        if (other.gameObject.CompareTag("Zombie"))
+        if (collision.gameObject.CompareTag("Zombie"))
         {
             health -= 20f;
         }

@@ -1531,8 +1531,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7265779479069766438}
-  m_LocalRotation: {x: -0.000000065007974, y: 0.000000018948757, z: -0.00000005053702,
-    w: 1}
+  m_LocalRotation: {x: -0.000000065007974, y: 0.000000018948757, z: -0.00000005053702, w: 1}
   m_LocalPosition: {x: 0.0019222334, y: -0.1400968, z: 0.1636405}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1627,8 +1626,7 @@ MonoBehaviour:
   pplayer: {fileID: 0}
   spawner: {fileID: 0}
   anim: {fileID: 0}
-  Projectile: {fileID: 6961161351017035448, guid: 47ecd29d8a088664883952eb45214cc2,
-    type: 3}
+  Projectile: {fileID: 6961161351017035448, guid: 47ecd29d8a088664883952eb45214cc2, type: 3}
 --- !u!136 &7295094610527822040
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1655,10 +1653,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f8526e2e14dfeb449d6c5afd4afc6ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 15
+  health: 50
   isDead: 0
   randomDeath: 0
-  ammo: {fileID: 0}
 --- !u!54 &5297002632614683740
 Rigidbody:
   m_ObjectHideFlags: 0

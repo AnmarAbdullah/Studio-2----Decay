@@ -8,19 +8,9 @@ public class Grenade : MonoBehaviour
     public float explosionForce;
     public float radius;
     public ParticleSystem explosionVFX;
-    public float timer;
     void Start()
     {
         Invoke("Explode", 3);
-    }
-
-    void Update()
-    {
-        /*timer +=Time.deltaTime;
-        if(timer >= 2)
-        {
-            explosionVFX.Play();
-        }*/
     }
 
     void Explode()

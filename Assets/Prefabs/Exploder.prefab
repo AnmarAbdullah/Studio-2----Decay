@@ -1280,7 +1280,6 @@ MonoBehaviour:
   anim: {fileID: 0}
   animTimer: 0
   explosionVFX: {fileID: 6493744500999986059}
-  gonnaExplode: 0
 --- !u!114 &2731455234276101461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1293,10 +1292,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f8526e2e14dfeb449d6c5afd4afc6ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 15
+  health: 50
   isDead: 0
   randomDeath: 0
-  ammo: {fileID: 0}
 --- !u!54 &3260468957948317398
 Rigidbody:
   m_ObjectHideFlags: 0

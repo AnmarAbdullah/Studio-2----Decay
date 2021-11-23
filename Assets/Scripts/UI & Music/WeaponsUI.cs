@@ -9,7 +9,6 @@ public class WeaponsUI : MonoBehaviour
     [SerializeField] int gunIndex;
     public Image[] GunImage;
     public Text[] clipSize;
-    public Text[] inClip;
     //public Text[] ammoSize;
     public GunSwitcher gunChosen;
     public GunController[] clip;
@@ -42,13 +41,10 @@ public class WeaponsUI : MonoBehaviour
             {
                 clipSize[i].gameObject.SetActive(true);
                 clipSize[i].text = clip[i].ammoInClip.ToString();
-                inClip[i].gameObject.SetActive(true);
-                inClip[i].text = clip[i].reservedAmmoCapacity.ToString();
             }
             else
             {
                 clipSize[i].gameObject.SetActive(false);
-                inClip[i].gameObject.SetActive(false);
             }
         }
 
