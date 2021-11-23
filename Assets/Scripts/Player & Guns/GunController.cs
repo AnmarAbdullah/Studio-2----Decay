@@ -7,7 +7,7 @@ public class GunController : MonoBehaviour
     [Header("Gun Settings")]
     public float fireRate = 0.1f;
     public int clipSize = 30;
-   public int ammoInClip;
+    public int ammoInClip;
     public int reservedAmmoCapacity = 270;
     public float impactForce = 100f;
     public float range = 100f;
@@ -17,6 +17,7 @@ public class GunController : MonoBehaviour
     public bool isSniper = false;
     public bool isLauncher = false;
     public float launcherForce;
+    public bool semi = false;
 
     bool canShoot;
     int ammoInReserve;
@@ -30,9 +31,11 @@ public class GunController : MonoBehaviour
     public GameObject rocketPrefab;
     //public GameObject weaponCamera;
     public GameObject enemyImpactEffect;
+    public GameObject enviroImpactEffect;
     public Animator animator;
     public AudioSource fireSound;
-    
+    public AudioSource reloadSound;
+
     public VisualEffect muzzleFlash;
 
     public Vector3 normalLocalPosition;
@@ -60,14 +63,14 @@ public class GunController : MonoBehaviour
         myTransform = transform;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        
+
     }
 
     private void OnEnable()
     {
         isReloading = false;
         animator.SetBool("Reloading", false);
-        
+
     }
     private void Update()
     {
@@ -78,7 +81,15 @@ public class GunController : MonoBehaviour
             return;
 
         reservedAmmoCapacity = ammoInReserve;
-        if (Input.GetMouseButton(0) && canShoot && ammoInClip > 0)
+
+        if (semi == false && Input.GetButton("Fire1") && canShoot && ammoInClip > 0)
+        {
+            canShoot = false;
+            ammoInClip--;
+            StartCoroutine(Shoot());
+        }
+
+        if (semi == true && Input.GetButtonDown("Fire1") && canShoot && ammoInClip > 0)
         {
             canShoot = false;
             ammoInClip--;
@@ -87,12 +98,12 @@ public class GunController : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.R) && ammoInClip < clipSize && ammoInReserve > 0 || ammoInClip <= 0)
         {
             StartCoroutine(Reload());
-            
+
             int amountNeeded = clipSize - ammoInClip;
             if (amountNeeded >= ammoInReserve)
             {
                 ammoInClip += ammoInReserve;
-                ammoInReserve = 0 ;
+                ammoInReserve = 0;
 
             }
             else
@@ -101,10 +112,10 @@ public class GunController : MonoBehaviour
                 ammoInReserve -= amountNeeded;
             }
         }
-        
+
     }
 
-    
+
 
     void Rotation()
     {
@@ -132,11 +143,11 @@ public class GunController : MonoBehaviour
                 UnScoped();
 
         }
-        
+
         Vector3 target = normalLocalPosition;
         float fovTarget = normalFOVPosition;
-        
-        
+
+
 
         if (isSniper == false && Input.GetMouseButton(1))
         {
@@ -149,9 +160,9 @@ public class GunController : MonoBehaviour
 
         if (isSniper == false && Input.GetMouseButtonUp(1))
         {
-            
+
             crosshair.SetActive(true);
-            
+
         }
 
 
@@ -163,11 +174,11 @@ public class GunController : MonoBehaviour
 
         if (isSniper == false)
         {
-            Camera.main.fieldOfView = povDesiredPosition;         
+            Camera.main.fieldOfView = povDesiredPosition;
         }
-        
 
-        
+
+
 
     }
 
@@ -196,12 +207,14 @@ public class GunController : MonoBehaviour
             yield return new WaitForSeconds(fireRate);
             canShoot = true;
         }
+
+
         if (isLauncher)
         {
             ShootRocket();
             canShoot = true;
         }
-        
+
     }
 
     void MuzzleFlash()
@@ -220,6 +233,8 @@ public class GunController : MonoBehaviour
             if (target != null)
             {
                 target.TakeDamage(damage);
+                GameObject impactGO = Instantiate(enemyImpactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                Destroy(impactGO, 2f);
             }
 
             if (hit.rigidbody != null)
@@ -227,9 +242,11 @@ public class GunController : MonoBehaviour
                 hit.rigidbody.AddForce(-hit.normal * impactForce);
             }
 
-            GameObject impactGO = Instantiate(enemyImpactEffect, hit.point, Quaternion.LookRotation(hit.normal));
 
-            Destroy(impactGO, 2f);
+            GameObject impactGOEnviro = Instantiate(enviroImpactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+            Destroy(impactGOEnviro, 2f);
+
+
         }
     }
 
@@ -239,6 +256,7 @@ public class GunController : MonoBehaviour
         Debug.Log("reloading");
 
         animator.SetBool("Reloading", true);
+        reloadSound.Play();
 
         yield return new WaitForSeconds(reloadTime - .25f);
 
@@ -248,7 +266,7 @@ public class GunController : MonoBehaviour
 
         isReloading = false;
 
-        
+
     }
 
     IEnumerator OnScoped()
@@ -258,9 +276,9 @@ public class GunController : MonoBehaviour
         animator.SetBool("Scoped", isScoped);
         yield return new WaitForSeconds(.15f);
 
-        scopeOverlay.SetActive(true);
+        //scopeOverlay.SetActive(true);
         //weaponCamera.SetActive(false);
-        crosshair.SetActive(false);
+        //crosshair.SetActive(false);
 
         normalFOV = fpsCam.fieldOfView;
         fpsCam.fieldOfView = scopedFOV;
