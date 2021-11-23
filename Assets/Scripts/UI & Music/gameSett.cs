@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class gameSett : MonoBehaviour
 {
@@ -49,6 +50,11 @@ public class gameSett : MonoBehaviour
     public void SetVolumeLevel(float sliderValue)
     {
         mixer.SetFloat("muwsicVol", Mathf.Log10(sliderValue));
+    }
+
+    public void PlayGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void QuitGame()
