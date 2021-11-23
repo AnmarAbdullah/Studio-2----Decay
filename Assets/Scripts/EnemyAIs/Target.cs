@@ -9,6 +9,9 @@ public class Target : MonoBehaviour
     Animator anim;
     [SerializeField]int randomDeath;
 
+    //public GameObject ammo;
+    int randomAmmoDrop;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -20,6 +23,11 @@ public class Target : MonoBehaviour
         if (health <= 0f)
         {
             Die();
+            //randomAmmoDrop = Random.Range(3, 6);
+            //if (randomAmmoDrop <= 3)
+            //{
+                //DropAmmo();
+            //}
         }
     }
     void Die()
@@ -38,4 +46,9 @@ public class Target : MonoBehaviour
         }
         Destroy(gameObject, 10);
     }
+
+    //void DropAmmo()
+    //{
+    //    GameObject Ammo = Instantiate(ammo, transform.position, Quaternion.identity);
+    //}
 }

@@ -718,13 +718,25 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1752011713}
-        m_TargetAssemblyTypeName: meStanu, Assembly-CSharp
-        m_MethodName: GoToSettingsMenu
+      - m_Target: {fileID: 1752011708}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1752011708}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -851,13 +863,25 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1752011713}
-        m_TargetAssemblyTypeName: meStanu, Assembly-CSharp
-        m_MethodName: QuitGame
+      - m_Target: {fileID: 1752011708}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1752011708}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2199,13 +2223,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1752011713}
-        m_TargetAssemblyTypeName: meStanu, Assembly-CSharp
-        m_MethodName: PlayGame
+      - m_Target: {fileID: 1752011708}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2396,7 +2420,6 @@ GameObject:
   - component: {fileID: 1752011710}
   - component: {fileID: 1752011709}
   - component: {fileID: 1752011713}
-  - component: {fileID: 1752011714}
   m_Layer: 5
   m_Name: main menu
   m_TagString: Untagged
@@ -2499,19 +2522,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1752011708}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6026b89a46513f04abeb3dab837dd55f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1752011714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1752011708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6026b89a46513f04abeb3dab837dd55f, type: 3}
+  m_Script: {fileID: 11500000, guid: c1ce6ca9b5064984fbcfc577c0405c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2114864549
