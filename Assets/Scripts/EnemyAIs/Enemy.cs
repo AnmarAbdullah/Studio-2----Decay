@@ -19,12 +19,8 @@ public class Enemy : MonoBehaviour
     public Animator anim;
     void Start()
     {
-       /*player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        pplayer = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        spawner = GameObject.FindGameObjectWithTag("Spawner").GetComponent<Spawner>();*/
         this.Player = GameObject.FindWithTag("Player").transform;
-        this.pplayer = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-        
+        this.pplayer = GameObject.FindWithTag("Player").GetComponent<PlayerController>(); 
 
         anim = GetComponent<Animator>();
     }

@@ -54,7 +54,11 @@ public class FourPlatformsTask : MonoBehaviour
                 }
             }
         }
-        if(Meter >= 20000) MeterUIBackground.gameObject.SetActive(false);
+        if (Meter >= 20000)
+        {
+            MeterUIBackground.gameObject.SetActive(false);
+            player.ChallengeIndex = 2;
+        }
     }
 
     void PlatformTriggered()
