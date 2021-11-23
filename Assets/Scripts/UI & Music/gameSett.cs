@@ -7,14 +7,15 @@ using UnityEngine.SceneManagement;
 
 public class gameSett : MonoBehaviour
 {
-    public AudioMixer mixer;
+    private AudioListener mixer;
     public Slider mouseSensitivity;
     public Slider camSensitivity;
     public Slider volume;
+    
 
     public float CamSen;
     public float mouseSen;
-    public int volumeControl;
+    public float volumeControl;
 
     private void Start()
     {
@@ -28,15 +29,15 @@ public class gameSett : MonoBehaviour
         {
             PlayerPrefs.SetFloat("mouseSensitivity", 1f);
         }
-
-    }
-
-    private void Update()
-    {
-
         CamSen = PlayerPrefs.GetFloat("camSensitivity");
         mouseSen = PlayerPrefs.GetFloat("mouseSensitivity");
     }
+
+    public void Update()
+    {
+        
+    }
+
 
     // Update is called once per frame
     public void SaveSettings()
@@ -49,7 +50,8 @@ public class gameSett : MonoBehaviour
 
     public void SetVolumeLevel(float sliderValue)
     {
-        mixer.SetFloat("muwsicVol", Mathf.Log10(sliderValue));
+        volume.onValueChanged.AddListener((sliderValue) =>  AudioListener.volume = sliderValue);
+        //mixer.SetFloat("muwsicVol", Mathf.Log10(sliderValue));
     }
 
     public void PlayGame()
