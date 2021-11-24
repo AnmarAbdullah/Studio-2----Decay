@@ -69,6 +69,7 @@ public class PlayerController : MonoBehaviour
         {
             velocity.y = -2;
         }
+
         
 
         float x = Input.GetAxis("Horizontal");
@@ -128,6 +129,14 @@ public class PlayerController : MonoBehaviour
         {
             Health = 300;
             transform.position= new Vector3(75,30,70);
+        }
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            speed = 55;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            speed = 40;
         }
     }
     void StemShot() // Ability 1

@@ -14,7 +14,7 @@ public class Spawner : Enemy
 
     protected override void spawnEnemies()
     {
-        Debug.Log("Sspawninggg");
+       // Debug.Log("Sspawninggg");
         //enemyTimer += Time.deltaTime;
         if (myChallengeIndex == pplayer.ChallengeIndex)
         {

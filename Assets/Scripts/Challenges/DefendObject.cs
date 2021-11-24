@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class DefendObject : MonoBehaviour
 {
     public float health = 10000;
     public GameObject healthUI;
     public Image healthbar;
+    public TextMeshProUGUI  healthCount;
     PlayerController player;
     void Start()
     {
@@ -21,6 +23,7 @@ public class DefendObject : MonoBehaviour
             healthUI.SetActive(true);
         }
         else { healthUI.SetActive(false); }
+        healthCount.text = health.ToString();
 
     }
 
