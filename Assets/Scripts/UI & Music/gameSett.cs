@@ -11,7 +11,8 @@ public class gameSett : MonoBehaviour
     public Slider mouseSensitivity;
     public Slider camSensitivity;
     public Slider volume;
-    
+    int index = 1;
+
 
     public float CamSen;
     public float mouseSen;
@@ -56,11 +57,16 @@ public class gameSett : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(index);
     }
 
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

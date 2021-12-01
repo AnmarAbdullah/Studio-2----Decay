@@ -15,7 +15,7 @@ public class ganeOver : MonoBehaviour
         {
             gameHasEnded = true;
             Debug.Log("You're dead");
-            Invoke("restartGame",restartDelay);
+            Invoke("restartGame", restartDelay);
         }
     }
 
