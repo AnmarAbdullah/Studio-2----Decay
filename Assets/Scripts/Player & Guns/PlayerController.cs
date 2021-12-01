@@ -128,7 +128,17 @@ public class PlayerController : MonoBehaviour
         if(Health <= 0 || playerPos.y < -20)
         {
             Health = 300;
-            transform.position= new Vector3(75,30,70);
+            switch (ChallengeIndex)
+            {
+                case 0:
+                    transform.position = new Vector3(75, 30, 70);break;
+                case 1:
+                    transform.position = new Vector3(120, 15, 115);break;
+                case 2:
+                    transform.position = new Vector3(488, 27, 506); break;
+                case 3:
+                    transform.position = new Vector3(530, 132, 1453); break;
+            }
         }
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
