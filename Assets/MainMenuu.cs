@@ -8,20 +8,23 @@ using UnityEngine.SceneManagement;
 public class MainMenuu : MonoBehaviour
 {
     int index =1;
+    public GameObject mainMenu;
+    public GameObject options;
     public void PlayGame()
     {
         Debug.Log("start");
+        options.SetActive(false);
         SceneManager.LoadScene(index);
     }
     public void GoToOptionsMenu()
     {
-        SceneManager.LoadScene("options");
+        mainMenu.SetActive(false);
+        options.SetActive(true);
     }
     public void GoToMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
     }
-
 
     public void QuitGame()
     {
