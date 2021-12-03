@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -33,7 +31,7 @@ public class PlayerController : MonoBehaviour
     public float grenades;
     public Text grenadesAmount;
 
-    [SerializeField]float stunCD;
+    [SerializeField] float stunCD;
     bool SonCD;
     bool isStunning;
     public Image stunCool;
@@ -43,7 +41,7 @@ public class PlayerController : MonoBehaviour
     public bool isGrounded;
 
     void Start()
-    {       
+    {
         walkingSoundEff = GetComponent<AudioSource>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -57,12 +55,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Horizontal") || Input.GetButtonDown("Vertical") && isGrounded)
         {
             walkingSoundEff.Play();
-            
+
         }
-        else if(!isGrounded || !Input.GetButton("Horizontal") && !Input.GetButton("Vertical"))
+        else if (!isGrounded || !Input.GetButton("Horizontal") && !Input.GetButton("Vertical"))
         {
             walkingSoundEff.Stop();
-            
+
         }
 
         if (isGrounded && velocity.y < 0)
@@ -70,7 +68,7 @@ public class PlayerController : MonoBehaviour
             velocity.y = -2;
         }
 
-        
+
 
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
@@ -82,28 +80,28 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
-           velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
+            velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
         }
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
 
-      // health system :
+        // health system :
         StemShot();
         Stun();
-        
+
         if (Input.GetKeyDown(KeyCode.H) & heals > 0)
         {
-                isHealing = true;
-                heals--;
+            isHealing = true;
+            heals--;
         }
-        
-      
+
+
         if (Health >= 300)
         {
             Health = 300;
         }
-       
+
         // player abilities UI
         grenadesAmount.text = grenades.ToString();
         healsAmount.text = heals.ToString();
@@ -113,9 +111,9 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.G) & grenades > 0)
         {
-                ThrowGrenade();
-                grenades--;
-        }       
+            ThrowGrenade();
+            grenades--;
+        }
         if (!SonCD)
         {
             if (Input.GetKeyDown(KeyCode.F))
@@ -125,19 +123,19 @@ public class PlayerController : MonoBehaviour
             }
         }
         Vector3 playerPos = transform.position;
-        if(Health <= 0 || playerPos.y < -20)
+        if (Health <= 0 || playerPos.y < -20)
         {
             Health = 300;
-            transform.position= new Vector3(75,30,70);
+            transform.position = new Vector3(75, 30, 70);
         }
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            speed = 55;
-        }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            speed = 40;
-        }
+        //if (Input.GetKeyDown(KeyCode.LeftShift))
+        //{
+        //    speed = speed * 1.5f;
+        //}
+        //if (Input.GetKeyUp(KeyCode.LeftShift))
+        //{
+        //    speed = speed / 1.5f;
+        //}
     }
     void StemShot() // Ability 1
     {
@@ -145,11 +143,11 @@ public class PlayerController : MonoBehaviour
         {
             Health += 0.6f;
             healingTime += Time.deltaTime;
-            if(healingTime >= 3)
+            if (healingTime >= 3)
             {
                 isHealing = false;
                 healingTime = 0;
-            }                        
+            }
         }
     }
 
@@ -157,7 +155,7 @@ public class PlayerController : MonoBehaviour
     {
         Rigidbody rb = Instantiate(Grenade, camera.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
         rb.AddForce(camera.transform.forward * 15, ForceMode.Impulse);
-        Debug.Log("NBAyoungboy"); 
+        Debug.Log("NBAyoungboy");
     }
 
 
@@ -178,7 +176,7 @@ public class PlayerController : MonoBehaviour
             isStunning = false;
             SonCD = true;
         }
-        if (SonCD) 
+        if (SonCD)
         {
             stunCD += Time.deltaTime;
             stunCool.gameObject.SetActive(true);
@@ -189,6 +187,22 @@ public class PlayerController : MonoBehaviour
             SonCD = false;
             stunCD = 0;
             stunCool.gameObject.SetActive(false);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Slow"))
+        {
+            speed = speed / 2;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Slow"))
+        {
+            speed = speed * 2;
         }
     }
 }
