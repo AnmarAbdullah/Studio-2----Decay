@@ -7,7 +7,7 @@ public class Jumptrigger : MonoBehaviour
     public AudioSource scream;
     public GameObject playercam;
     public GameObject jumpCam;
-    public GameObject flickerImg;
+    //public GameObject flickerImg;
     public GameObject destroy;
 
     private void OnTriggerEnter(Collider other)
@@ -15,7 +15,7 @@ public class Jumptrigger : MonoBehaviour
         scream.Play();
         jumpCam.SetActive(true);
         playercam.SetActive(false);
-        flickerImg.SetActive(true);
+        //flickerImg.SetActive(true);
         StartCoroutine(EndJump());
         
     }
@@ -25,7 +25,7 @@ public class Jumptrigger : MonoBehaviour
         yield return new WaitForSeconds(2f);
         playercam.SetActive(true);
         jumpCam.SetActive(false);
-        flickerImg.SetActive(false);
+        //flickerImg.SetActive(false);
         if (GameObject.FindGameObjectWithTag("Destroy"))
         {
             Destroy(destroy);
