@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 8001567753106086665}
   - component: {fileID: 8001567753104955849}
   - component: {fileID: 4522392871334709736}
+  - component: {fileID: -5635268308306131002}
+  - component: {fileID: 5168559540687643984}
   m_Layer: 0
   m_Name: Grenade
   m_TagString: Untagged
@@ -27,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8001567753106884361}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 60.968624, y: 0.773, z: 66.482635}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 60.97, y: 0.77242, z: 66.545}
+  m_LocalScale: {x: 2.1245906, y: 2.1245906, z: 2.1245906}
   m_Children:
   - {fileID: 2042635803504179430}
   m_Father: {fileID: 0}
@@ -99,6 +101,36 @@ MonoBehaviour:
   explosionForce: 20
   radius: 20
   explosionVFX: {fileID: 2203878921623346712}
+--- !u!54 &-5635268308306131002
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8001567753106884361}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!136 &5168559540687643984
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8001567753106884361}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.035899084
+  m_Height: 0.12784572
+  m_Direction: 1
+  m_Center: {x: -0.0009902306, y: 0.055362895, z: 0.0005154349}
 --- !u!1001 &2042226066298966224
 PrefabInstance:
   m_ObjectHideFlags: 0

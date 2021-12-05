@@ -7,9 +7,9 @@ public class Spawner : Enemy
     public GameObject[] Enemies;
     public GameObject Zombie;
     public float timer;
-    public float nextSpawn = 3;
+    public float nextSpawn;
     public float enemyTimer;
-    public float nextEnemy = 3;
+    public float nextEnemy;
     public int myChallengeIndex;
 
     protected override void spawnEnemies()

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Boss : MonoBehaviour
 {
@@ -10,44 +11,65 @@ public class Boss : MonoBehaviour
     public GameObject Zombie;
     public Transform seekObject;
     Transform player;
+    PlayerController pplayer;
     bool projectiling;
     bool zombie;
     public bool[] Behaviour;
     public float timer;
     int chosenPhase;
+    public Target target;
+    public Image bossHealth;
+    public GameObject BossHealthUI;
+    /*float bossMaxHealth = 3000;
+    float currenthealth;*/
     void Start()
     {
         this.player = GameObject.FindWithTag("Player").transform;
+        this.pplayer = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+
     }
 
     void Update()
     {
-        mouth.transform.LookAt(player);
-        for (int i = 0; i < eyes.Length; i++)
+        //mouth.transform.LookAt(seekObject);
+        bossHealth.fillAmount = target.health / 3000;
+
+        if (pplayer.ChallengeIndex == 4)
         {
-            eyes[i].transform.LookAt(seekObject);
-        }
-        timer += Time.deltaTime;
-        
-        if (timer >= 4)
-        {
-            chosenPhase = Random.Range(0, Behaviour.Length);
-            for (int i = 0; i < Behaviour.Length; i++)
+            timer += Time.deltaTime;
+            BossHealthUI.gameObject.SetActive(true);
+            //mouth.transform.LookAt(seekObject);
+            for (int i = 0; i < eyes.Length; i++)
             {
-                if (chosenPhase == i)
-                {
-                    Behaviour[i] = true;
-                }
-                else
-                {
-                    Behaviour[i] = false;
-                }
+                eyes[i].transform.LookAt(seekObject);
             }
-            timer = 0;
+
+            if (timer >= 5)
+            {
+                chosenPhase = Random.Range(0, Behaviour.Length);
+                for (int i = 0; i < Behaviour.Length; i++)
+                {
+                    if (chosenPhase == i)
+                    {
+                        Behaviour[i] = true;
+                    }
+                    else
+                    {
+                        Behaviour[i] = false;
+                    }
+                }
+                timer = 0;
+            }
         }
         laserEyes();
         Projectile();
         ZombieSpit();
+
+        if(target.health <= 0)
+        {
+            player.transform.position = new Vector3(164, 11, 173);
+            pplayer.ChallengeIndex = 1;
+        }
         /*if (!Behaviour[0])
         {
             for (int i = 0; i < eyes.Length; i++)
@@ -64,6 +86,8 @@ public class Boss : MonoBehaviour
             for (int i = 0; i < eyes.Length; i++)
             {
                 eyes[i].gameObject.SetActive(true);
+                eyes[i].transform.LookAt(seekObject);
+
             }
         }
         else
@@ -71,22 +95,23 @@ public class Boss : MonoBehaviour
             for (int i = 0; i < eyes.Length; i++)
             {
                 eyes[i].gameObject.SetActive(false);
+                eyes[i].transform.LookAt(seekObject);
+
             }
         }
     }
 
     public void Projectile()
     {
-        mouth.transform.LookAt(player);
+       // mouth.transform.LookAt(seekObject);
         if (Behaviour[1])
         {
-            if (!projectiling)
-            {
-                Rigidbody rb = Instantiate(projectile, mouth.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-                rb.AddForce(transform.forward * 15, ForceMode.Impulse);
-                projectiling = true;
-                Invoke(nameof(ResetAttack), 0.05f);
-            }
+            mouth.gameObject.SetActive(true);
+        }
+        else
+        {
+            mouth.gameObject.SetActive(false);
+
         }
     }
     public void ResetAttack()
@@ -103,7 +128,7 @@ public class Boss : MonoBehaviour
                 Rigidbody rbb = Instantiate(Zombie, mouth.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
                 rbb.AddForce(transform.forward * 15, ForceMode.Impulse);
                 zombie = true;
-                Invoke(nameof(ResetAttack), 3f);
+                Invoke(nameof(ResetAttack), 1f);
             }
         }
     }

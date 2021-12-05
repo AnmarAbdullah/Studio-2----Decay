@@ -13,7 +13,7 @@ public class PlatformCollision : MonoBehaviour
     {
         platform = GetComponentInParent<FourPlatformsTask>();
     }
-    private void OnTriggerStay(Collider other)
+    public void OnTriggerStay(Collider other)
     {
         Debug.Log("hellooooo");
         if (platform.PlatformIndex == platformInd)

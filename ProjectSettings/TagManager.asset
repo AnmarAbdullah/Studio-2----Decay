@@ -9,6 +9,10 @@ TagManager:
   - Zombie
   - Destroy
   - Slow
+  - Weapon
+  - BossTerrain
+  - BossTP
+  - SpitterSpit
   layers:
   - Default
   - TransparentFX

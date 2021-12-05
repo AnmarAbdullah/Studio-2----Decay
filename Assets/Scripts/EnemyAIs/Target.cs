@@ -30,7 +30,7 @@ public class Target : MonoBehaviour
             //}
         }
     }
-    void Die()
+    public void Die()
     {
         isDead = true;
         randomDeath = Random.Range(1, 3);
@@ -44,6 +44,7 @@ public class Target : MonoBehaviour
         {
             anim.SetBool("isDeadBack", true);
         }
+        anim.SetInteger("State", 3);
         Destroy(gameObject, 10);
     }
 

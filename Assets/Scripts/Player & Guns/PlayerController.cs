@@ -1,15 +1,20 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
     public float speed;
     public float gravity = -9.81f;
 
+    public int playerLives = 5;
+
     public CharacterController controller;
     public AudioSource walkingSoundEff;
     public Camera camera;
     public GameObject Grenade;
+    public TextMeshProUGUI livesCount;
 
     Vector3 velocity;
 
@@ -105,6 +110,14 @@ public class PlayerController : MonoBehaviour
         // player abilities UI
         grenadesAmount.text = grenades.ToString();
         healsAmount.text = heals.ToString();
+        if(playerLives == 0)
+        {
+            GameOver();
+            Debug.Log("skill issue");
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+        livesCount.text = playerLives.ToString();
     }
 
     private void FixedUpdate()
@@ -126,7 +139,16 @@ public class PlayerController : MonoBehaviour
         if (Health <= 0 || playerPos.y < -20)
         {
             Health = 300;
-            transform.position = new Vector3(75, 30, 70);
+            playerLives -= 1;
+            switch (ChallengeIndex)
+            {
+                case 0:
+                    transform.position = new Vector3(164, 11, 173); break;
+                case 1:
+                    transform.position = new Vector3(120, 15, 115); break;
+                case 3:
+                    transform.position = new Vector3(530, 132, 1453); break;
+            }
         }
         //if (Input.GetKeyDown(KeyCode.LeftShift))
         //{
@@ -196,6 +218,22 @@ public class PlayerController : MonoBehaviour
         {
             speed = speed / 2;
         }
+        
+        if (other.gameObject.CompareTag("BossTerrain"))
+        { 
+            transform.position = new Vector3(530, 132, 1435);
+            Health -= 30;
+        }
+        if (other.gameObject.CompareTag("BossTP") && ChallengeIndex ==4)
+        {
+            transform.position = new Vector3(530, 132, 1435);
+            speed = 55;
+        }
+        if (other.gameObject.CompareTag("SpitterSpit"))
+        {
+            Health -= 15;
+        }
+
     }
 
     private void OnTriggerExit(Collider other)
@@ -204,5 +242,9 @@ public class PlayerController : MonoBehaviour
         {
             speed = speed * 2;
         }
+    }
+    void GameOver() 
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

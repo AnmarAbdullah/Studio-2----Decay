@@ -59,11 +59,11 @@ public class PickupThrow : MonoBehaviour
         {
             touched = true;
         }
-        if (other.gameObject.CompareTag("Incinerator"))
+       /* if (other.gameObject.CompareTag("Incinerator"))
         {
             Destroy(transform.gameObject);
             // soon add +1 for a ui.
-        }
+        }*/
     }
   /*  private void OnCollisionEnter(Collision collision)
     {

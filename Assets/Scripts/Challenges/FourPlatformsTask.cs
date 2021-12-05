@@ -13,7 +13,6 @@ public class FourPlatformsTask : MonoBehaviour
        
     public int PlatformIndex;
     [SerializeField] float switchTimer;
-    [SerializeField] float turnTimer;
     
     public float Meter;
     float currentMeter;
@@ -64,7 +63,7 @@ public class FourPlatformsTask : MonoBehaviour
             PlatformVisuals[PlatformIndex].gameObject.SetActive(true);
             MeterUIBackground.gameObject.SetActive(true);
         
-        Invoke(nameof(PlatformHalt), 12);
+        Invoke(nameof(PlatformHalt), 17);
     }
     void PlatformHalt()
     {

@@ -25,6 +25,7 @@ public class GunController : MonoBehaviour
     bool isScoped = false;
     float normalFOV;
     Transform myTransform;
+    public Settings settings;
 
     public GameObject scopeOverlay;
     public GameObject crosshair;
@@ -121,7 +122,7 @@ public class GunController : MonoBehaviour
     {
         Vector2 mouseAxis = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
 
-        mouseAxis *= mouseSensitivity;
+        mouseAxis *= settings.sensitivity;
         currentRotation += mouseAxis;
 
         currentRotation.y = Mathf.Clamp(currentRotation.y, -90, 90);

@@ -1216,8 +1216,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5451402917137366261}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 66.351234, y: 0.00000071525574, z: 59.732544}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 66.352, y: 0.0020018, z: 59.732}
+  m_LocalScale: {x: 0.99752736, y: 0.99752736, z: 0.99752736}
   m_Children:
   - {fileID: 8318697528677709967}
   - {fileID: 917824418569127643}
@@ -1280,6 +1280,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   animTimer: 0
   explosionVFX: {fileID: 6493744500999986059}
+  gonnaExplode: 0
 --- !u!114 &2731455234276101461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1292,7 +1293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f8526e2e14dfeb449d6c5afd4afc6ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  health: 20
   isDead: 0
   randomDeath: 0
 --- !u!54 &3260468957948317398
