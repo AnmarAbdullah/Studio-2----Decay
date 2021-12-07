@@ -5,29 +5,36 @@ using UnityEngine;
 public class AmmoBox : MonoBehaviour
 {
     Animation anim;
-    public GunController[] gunsAmmo;
+    public GunController[] gunControllers;
     public ParticleSystem ammoEffect;
     public bool isUsed;
+    PlayerController player;
+
     private void Start()
     {
         anim = GetComponent<Animation>();
         //gunsAmmo = gameObject.GetComponents<GunController>();
-        gunsAmmo = FindObjectsOfType<GunController>();
+        gunControllers = FindObjectsOfType<GunController>(true);
+        this.player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
     }
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            var weapons = GameObject.FindGameObjectsWithTag("Weapon");
+            //var weapons = GameObject.FindGameObjectsWithTag("Weapon");
             if (Input.GetKeyDown(KeyCode.E) && !isUsed)
             {
+                ammoEffect.gameObject.SetActive(false);
                 isUsed = true;
                 anim.Play();
-                foreach(var guns in weapons)
+                foreach(GunController gun in gunControllers)
                 {
-                    guns.GetComponent<GunController>().reservedAmmoCapacity += 60;
-                    //guns.reservedAmmoCapacity += 60;
+                    gun.ammoInReserve += 60;
+                    Debug.Log(gun.gameObject.name);
                 }
+                player.heals += 2;
+                player.grenades += 2;
+
             }
         }
     }

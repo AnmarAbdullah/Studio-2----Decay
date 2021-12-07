@@ -145,9 +145,9 @@ public class PlayerController : MonoBehaviour
                 case 0:
                     transform.position = new Vector3(164, 11, 173); break;
                 case 1:
-                    transform.position = new Vector3(120, 15, 115); break;
+                    transform.position = new Vector3(192, 8, 174); break;
                 case 3:
-                    transform.position = new Vector3(530, 132, 1453); break;
+                    transform.position = new Vector3(564, 16, 663); break;
             }
         }
         //if (Input.GetKeyDown(KeyCode.LeftShift))

@@ -7,8 +7,8 @@ public class ChallengeIndex : MonoBehaviour
     public int nextChallenge;
     public PlayerController player;
     DefendObject golem;
-    float radius = 10000;
-    public AudioSource bossbattle;
+    float radius = 90000;
+    AudioSource bossbattle;
 
     void Start()
     {
@@ -21,15 +21,15 @@ public class ChallengeIndex : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             player.ChallengeIndex = nextChallenge;
-            Collider[] collider = Physics.OverlapSphere(transform.position, radius);
+           /* Collider[] collider = Physics.OverlapSphere(transform.position, radius);
             foreach (Collider near in collider)
             {
                 Target bodies = near.GetComponent<Target>();
-                if (bodies != null)
-                {
+                //if (bodies != null)
+                //{
                     bodies.Die();
-                }
-            }
+               // }
+            }*/
             if (player.ChallengeIndex ==4 && golem.challengeTimer >= 119)
             {
                 player.transform.position = new Vector3(530, 132, 1435);

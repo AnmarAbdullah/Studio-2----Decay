@@ -53,7 +53,7 @@ public class WeaponsUI : MonoBehaviour
             if (gunIndex == i) 
             {
                 Ammo[i].gameObject.SetActive(true);
-                Ammo[i].text = clip[i].reservedAmmoCapacity.ToString();    
+                Ammo[i].text = clip[i].ammoInReserve.ToString();    
             }
             else
             {

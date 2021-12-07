@@ -13,6 +13,8 @@ TagManager:
   - BossTerrain
   - BossTP
   - SpitterSpit
+  - Undefined
+  - Enemy
   layers:
   - Default
   - TransparentFX

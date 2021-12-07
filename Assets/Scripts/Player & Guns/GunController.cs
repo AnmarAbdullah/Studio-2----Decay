@@ -20,7 +20,7 @@ public class GunController : MonoBehaviour
     public bool semi = false;
 
     bool canShoot;
-    int ammoInReserve;
+    public int ammoInReserve;
     bool isReloading = false;
     bool isScoped = false;
     float normalFOV;
@@ -81,7 +81,7 @@ public class GunController : MonoBehaviour
         if (isReloading)
             return;
 
-        reservedAmmoCapacity = ammoInReserve;
+        //reservedAmmoCapacity = ammoInReserve;
 
         if (semi == false && Input.GetButton("Fire1") && canShoot && ammoInClip > 0)
         {

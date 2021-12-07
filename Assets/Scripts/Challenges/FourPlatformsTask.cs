@@ -10,13 +10,14 @@ public class FourPlatformsTask : MonoBehaviour
     public GameObject[] PlatformVisuals;
 
     public PlayerController player;
+    public ParticleSystem gate;
        
     public int PlatformIndex;
     [SerializeField] float switchTimer;
     
     public float Meter;
     float currentMeter;
-    float MAXMeter = 20000;
+    float MAXMeter = 10000;
 
     public Image MeterUIBackground;
     public Image MeterUI;
@@ -53,7 +54,11 @@ public class FourPlatformsTask : MonoBehaviour
                 }
             }
         }
-        if(Meter >= 20000) MeterUIBackground.gameObject.SetActive(false);
+        if (Meter >= 9990)
+        {
+            MeterUIBackground.gameObject.SetActive(false);
+            gate.gameObject.SetActive(false);
+        }
     }
 
     void PlatformTriggered()

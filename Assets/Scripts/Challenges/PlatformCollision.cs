@@ -20,7 +20,7 @@ public class PlatformCollision : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                testingTimer += Time.deltaTime;
+                testingTimer += Time.deltaTime * 1.2f;
                 platform.Meter += testingTimer;
             }
         }

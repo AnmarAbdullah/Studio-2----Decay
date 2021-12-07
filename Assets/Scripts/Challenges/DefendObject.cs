@@ -15,13 +15,14 @@ public class DefendObject : MonoBehaviour
     public float challengeTimerINT;
     public TextMeshProUGUI challengeTime;
     public GameObject bossWay;
+    public GameObject bossGate;
     void Start()
     {
         this.player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
     }
     void Update()
     {
-        healthbar.fillAmount = health / 200;
+        healthbar.fillAmount = health / 300;
         challengeTime.text = challengeTimerINT.ToString();
         if(player.ChallengeIndex == 3)
         {
@@ -37,6 +38,12 @@ public class DefendObject : MonoBehaviour
             player.ChallengeIndex = 4;
             bossWay.gameObject.SetActive(true);
             challengeTime.gameObject.SetActive(false);
+            bossGate.gameObject.SetActive(false);
+        }
+        if(health <= 0)
+        {
+            player.playerLives -= 1;
+            health = 300;
         }
     }
 
@@ -45,6 +52,13 @@ public class DefendObject : MonoBehaviour
         if (collision.gameObject.CompareTag("Zombie"))
         {
             health -= 20f;
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Zombie"))
+        {
+            health -= 10f;
         }
     }
 }
