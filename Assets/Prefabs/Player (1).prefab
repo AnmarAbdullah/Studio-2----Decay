@@ -1317,6 +1317,7 @@ Transform:
   m_Children:
   - {fileID: 1790436070727556186}
   - {fileID: 1790436069611634365}
+  - {fileID: 7481782609487624366}
   - {fileID: 1790436070592478591}
   - {fileID: 7379326844841694303}
   - {fileID: 6122935193440861536}
@@ -1453,10 +1454,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 50
   gravity: -9.81
+  playerLives: 5
   controller: {fileID: 1790436069633068701}
   walkingSoundEff: {fileID: 0}
   camera: {fileID: 0}
   Grenade: {fileID: 0}
+  livesCount: {fileID: 0}
   groundCheck: {fileID: 1790436070592478591}
   groundDistance: 0.4
   groundMask:
@@ -1501,7 +1504,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1790436069633068699}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1790436070727556187
 GameObject:
@@ -4536,7 +4539,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1790436069633068699}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &6013343868248028435
 ParticleSystem:
@@ -9562,7 +9565,7 @@ Transform:
   m_Children:
   - {fileID: 6013343867292610015}
   m_Father: {fileID: 1790436069633068699}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6013343868785397066
 GameObject:
@@ -12985,6 +12988,8 @@ MonoBehaviour:
   isLauncher: 0
   launcherForce: 0
   semi: 0
+  ammoInReserve: 0
+  settings: {fileID: 0}
   scopeOverlay: {fileID: 0}
   crosshair: {fileID: 0}
   rocketPrefab: {fileID: 0}
@@ -13306,7 +13311,7 @@ Transform:
   - {fileID: 2797884741492249631}
   - {fileID: 6122935194644753742}
   m_Father: {fileID: 1790436069633068699}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7158140153901920965
 MeshFilter:
@@ -13402,6 +13407,8 @@ MonoBehaviour:
   isLauncher: 0
   launcherForce: 0
   semi: 0
+  ammoInReserve: 0
+  settings: {fileID: 0}
   scopeOverlay: {fileID: 0}
   crosshair: {fileID: 0}
   rocketPrefab: {fileID: 0}
@@ -13592,6 +13599,8 @@ MonoBehaviour:
   isLauncher: 0
   launcherForce: 0
   semi: 0
+  ammoInReserve: 0
+  settings: {fileID: 0}
   scopeOverlay: {fileID: 0}
   crosshair: {fileID: 0}
   rocketPrefab: {fileID: 0}
@@ -13782,6 +13791,8 @@ MonoBehaviour:
   isLauncher: 0
   launcherForce: 0
   semi: 1
+  ammoInReserve: 0
+  settings: {fileID: 0}
   scopeOverlay: {fileID: 0}
   crosshair: {fileID: 0}
   rocketPrefab: {fileID: 0}
@@ -14148,7 +14159,7 @@ Transform:
   - {fileID: 7053230573813042190}
   - {fileID: 6013343867753708788}
   m_Father: {fileID: 1790436069633068699}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: -91.167, y: -158.775, z: -650.445}
 --- !u!33 &5892811945744276474
 MeshFilter:
@@ -14225,6 +14236,8 @@ MonoBehaviour:
   isLauncher: 1
   launcherForce: 100
   semi: 0
+  ammoInReserve: 0
+  settings: {fileID: 0}
   scopeOverlay: {fileID: 0}
   crosshair: {fileID: 0}
   rocketPrefab: {fileID: 8626006474202351211, guid: 88c4b83af8563034e9488394f61c33ba,
@@ -15217,4 +15230,94 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 914dd253fa08c154799dc48e7dceb99d,
     type: 3}
   m_PrefabInstance: {fileID: 6013343868539667922}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6974819245219896732
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1790436069633068699}
+    m_Modifications:
+    - target: {fileID: 513173424019318066, guid: f0fd40018ca0f8e4ebc1a4b142393898,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 513173424019318066, guid: f0fd40018ca0f8e4ebc1a4b142393898,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 513173424019318066, guid: f0fd40018ca0f8e4ebc1a4b142393898,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 513173424019318066, guid: f0fd40018ca0f8e4ebc1a4b142393898,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 513173424019318066, guid: f0fd40018ca0f8e4ebc1a4b142393898,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 513173424019318066, guid: f0fd40018ca0f8e4ebc1a4b142393898,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 513173424019318066, guid: f0fd40018ca0f8e4ebc1a4b142393898,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 513173424019318066, guid: f0fd40018ca0f8e4ebc1a4b142393898,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 513173424019318066, guid: f0fd40018ca0f8e4ebc1a4b142393898,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 513173424019318066, guid: f0fd40018ca0f8e4ebc1a4b142393898,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 513173424019318066, guid: f0fd40018ca0f8e4ebc1a4b142393898,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 513173424019318069, guid: f0fd40018ca0f8e4ebc1a4b142393898,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 513173424019318069, guid: f0fd40018ca0f8e4ebc1a4b142393898,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 513173424019318069, guid: f0fd40018ca0f8e4ebc1a4b142393898,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 513173424019318071, guid: f0fd40018ca0f8e4ebc1a4b142393898,
+        type: 3}
+      propertyPath: m_Name
+      value: health boost
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f0fd40018ca0f8e4ebc1a4b142393898, type: 3}
+--- !u!4 &7481782609487624366 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 513173424019318066, guid: f0fd40018ca0f8e4ebc1a4b142393898,
+    type: 3}
+  m_PrefabInstance: {fileID: 6974819245219896732}
   m_PrefabAsset: {fileID: 0}
