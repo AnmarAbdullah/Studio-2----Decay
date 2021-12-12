@@ -6,7 +6,7 @@ using TMPro;
 public class PlayerController : MonoBehaviour
 {
     public float speed;
-    public float gravity = -9.81f;
+    public float gravity = -14;
 
     public int playerLives = 5;
 
@@ -15,13 +15,14 @@ public class PlayerController : MonoBehaviour
     public Camera camera;
     public GameObject Grenade;
     public TextMeshProUGUI livesCount;
+    public ParticleSystem healVFX;
 
     Vector3 velocity;
 
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
-    public float jumpHeight = 3;
+    public float jumpHeight = 5;
 
     public float Health = 300;
     public float healingTime;
@@ -143,7 +144,7 @@ public class PlayerController : MonoBehaviour
             switch (ChallengeIndex)
             {
                 case 0:
-                    transform.position = new Vector3(164, 11, 173); break;
+                    transform.position = new Vector3(237, 5, 173); break;
                 case 1:
                     transform.position = new Vector3(192, 8, 174); break;
                 case 3:
@@ -165,10 +166,12 @@ public class PlayerController : MonoBehaviour
         {
             Health += 0.6f;
             healingTime += Time.deltaTime;
+            healVFX.gameObject.SetActive(true);
             if (healingTime >= 3)
             {
                 isHealing = false;
                 healingTime = 0;
+                healVFX.gameObject.SetActive(false);
             }
         }
     }

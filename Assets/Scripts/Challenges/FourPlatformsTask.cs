@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class FourPlatformsTask : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class FourPlatformsTask : MonoBehaviour
 
     public PlayerController player;
     public ParticleSystem gate;
-       
+    
     public int PlatformIndex;
     [SerializeField] float switchTimer;
     
@@ -21,6 +22,8 @@ public class FourPlatformsTask : MonoBehaviour
 
     public Image MeterUIBackground;
     public Image MeterUI;
+    public TextMeshProUGUI challengeEND;
+    float challengeEndTimer;
     void Start()
     {
         this.player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
@@ -57,7 +60,13 @@ public class FourPlatformsTask : MonoBehaviour
         if (Meter >= 9990)
         {
             MeterUIBackground.gameObject.SetActive(false);
+            challengeEND.gameObject.SetActive(true);
             gate.gameObject.SetActive(false);
+            challengeEndTimer += Time.deltaTime;
+            if(challengeEndTimer >= 3)
+            {
+                challengeEND.gameObject.SetActive(false);
+            }
         }
     }
 
@@ -75,6 +84,6 @@ public class FourPlatformsTask : MonoBehaviour
         ///PlatformVisuals[PlatformIndex].Stop();
         PlatformVisuals[PlatformIndex].gameObject.SetActive(false);
         PlatformIndex = 4;
-        MeterUIBackground.gameObject.SetActive(false);
+        //MeterUIBackground.gameObject.SetActive(false);
     }
 }

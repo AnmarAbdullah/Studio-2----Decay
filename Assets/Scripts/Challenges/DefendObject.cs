@@ -11,7 +11,7 @@ public class DefendObject : MonoBehaviour
     public Image healthbar;
     public TextMeshProUGUI  healthCount;
     PlayerController player;
-    public float challengeTimer;
+    public float challengeTimer = 120;
     public float challengeTimerINT;
     public TextMeshProUGUI challengeTime;
     public GameObject bossWay;
@@ -19,6 +19,7 @@ public class DefendObject : MonoBehaviour
     void Start()
     {
         this.player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+        challengeTimer = 120;
     }
     void Update()
     {
@@ -28,12 +29,12 @@ public class DefendObject : MonoBehaviour
         {
             healthUI.SetActive(true);
             challengeTime.gameObject.SetActive(true);
-            challengeTimer += Time.deltaTime;
+            challengeTimer -= Time.deltaTime;
             challengeTimerINT = Mathf.RoundToInt(challengeTimer);
         }
         else { healthUI.SetActive(false); }
         healthCount.text = health.ToString();
-        if(challengeTimer >= 120)
+        if(challengeTimer <= 0)
         {
             player.ChallengeIndex = 4;
             bossWay.gameObject.SetActive(true);
@@ -47,18 +48,18 @@ public class DefendObject : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision)
+    /*void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Zombie"))
         {
-            health -= 20f;
+            health -= 10f;
         }
-    }
+    }*/
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Zombie"))
         {
-            health -= 10f;
+            health -= 30f;
         }
     }
 }

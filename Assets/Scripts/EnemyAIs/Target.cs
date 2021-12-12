@@ -8,6 +8,7 @@ public class Target : MonoBehaviour
     public bool isDead;
     Animator anim;
     [SerializeField]int randomDeath;
+    PlayerController player;
 
     //public GameObject ammo;
     int randomAmmoDrop;
@@ -15,6 +16,14 @@ public class Target : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
+        this.player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+    }
+    void Update()
+    {
+        if(player.ChallengeIndex ==2 || player.ChallengeIndex == 4)
+        {
+            Die();
+        }
     }
 
     public void TakeDamage(float amount)

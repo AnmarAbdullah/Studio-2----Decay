@@ -20,11 +20,13 @@ public class Boss : MonoBehaviour
     public Target target;
     public Image bossHealth;
     public GameObject BossHealthUI;
+    public GunController[] gunControllers;
     /*float bossMaxHealth = 3000;
     float currenthealth;*/
     void Start()
     {
         this.player = GameObject.FindWithTag("Player").transform;
+        gunControllers = FindObjectsOfType<GunController>(true);
         this.pplayer = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
 
     }
@@ -67,8 +69,15 @@ public class Boss : MonoBehaviour
 
         if(target.health <= 0)
         {
-            player.transform.position = new Vector3(164, 11, 173);
+            player.transform.position = new Vector3(192, 8, 174);
             pplayer.ChallengeIndex = 1;
+            target.health = 1;
+            BossHealthUI.gameObject.SetActive(false);
+            foreach (GunController gun in gunControllers)
+            {
+                gun.ammoInReserve += 10000;
+                Debug.Log(gun.gameObject.name);
+            }
         }
         /*if (!Behaviour[0])
         {
