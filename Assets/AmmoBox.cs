@@ -29,7 +29,7 @@ public class AmmoBox : MonoBehaviour
                 anim.Play();
                 foreach(GunController gun in gunControllers)
                 {
-                    gun.ammoInReserve += 60;
+                    gun.ammoInReserve += 100;
                     Debug.Log(gun.gameObject.name);
                 }
                 player.heals += 2;

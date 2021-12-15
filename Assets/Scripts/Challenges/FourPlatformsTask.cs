@@ -18,7 +18,7 @@ public class FourPlatformsTask : MonoBehaviour
     
     public float Meter;
     float currentMeter;
-    float MAXMeter = 10000;
+    float MAXMeter = 50000;
 
     public Image MeterUIBackground;
     public Image MeterUI;
@@ -57,7 +57,7 @@ public class FourPlatformsTask : MonoBehaviour
                 }
             }
         }
-        if (Meter >= 9990)
+        if (Meter >= MAXMeter)
         {
             MeterUIBackground.gameObject.SetActive(false);
             challengeEND.gameObject.SetActive(true);

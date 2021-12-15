@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
 using TMPro;
 
 public class PlayerController : MonoBehaviour
@@ -52,6 +53,7 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         stunCool.gameObject.SetActive(false);
+        //StartCoroutine(PausePlayerAtBeginning());
     }
     void Update()
     {
@@ -249,5 +251,13 @@ public class PlayerController : MonoBehaviour
     void GameOver() 
     {
         SceneManager.LoadScene("MainMenu");
+    }
+    IEnumerator PausePlayerAtBeginning()
+    {
+        float tempSpeed = speed;
+        speed = 0;
+        yield return new WaitForSeconds(15f);
+        speed = tempSpeed;
+        
     }
 }

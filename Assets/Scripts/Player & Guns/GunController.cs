@@ -64,6 +64,7 @@ public class GunController : MonoBehaviour
         myTransform = transform;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        //StartCoroutine(CantLookOrShootAtBeginning());
 
     }
 
@@ -284,6 +285,15 @@ public class GunController : MonoBehaviour
         normalFOV = fpsCam.fieldOfView;
         fpsCam.fieldOfView = scopedFOV;
     }
+
+    //IEnumerator CantLookOrShootAtBeginning()
+    //{
+
+    //    canShoot = false;
+    //    yield return new WaitForSeconds(15f);
+
+    //    canShoot = true;
+    //}
 
     public void UnScoped()
     {
