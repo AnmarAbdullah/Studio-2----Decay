@@ -32,7 +32,7 @@ public class ChallengeIndex : MonoBehaviour
             }*/
             if (player.ChallengeIndex ==4 && golem.challengeTimer >= 119)
             {
-                player.transform.position = new Vector3(530, 132, 1435);
+                player.transform.position = new Vector3(530, 145, 1435);
             }
         }
     }

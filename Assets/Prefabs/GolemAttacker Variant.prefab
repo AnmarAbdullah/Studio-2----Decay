@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Golem: {fileID: 0}
   speed: 1.47
+  dist: 0
 --- !u!1001 &3335675281509401389
 PrefabInstance:
   m_ObjectHideFlags: 0

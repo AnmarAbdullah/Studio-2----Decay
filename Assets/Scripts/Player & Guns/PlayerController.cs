@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         stunCool.gameObject.SetActive(false);
-        //StartCoroutine(PausePlayerAtBeginning());
+        StartCoroutine(PausePlayerAtBeginning());
     }
     void Update()
     {
@@ -221,7 +221,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Slow"))
         {
-            speed = speed / 2;
+            speed = speed / 2.3f;
         }
         
         if (other.gameObject.CompareTag("BossTerrain"))
@@ -231,7 +231,7 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject.CompareTag("BossTP") && ChallengeIndex ==4)
         {
-            transform.position = new Vector3(530, 132, 1435);
+            transform.position = new Vector3(530, 140, 1435);
             speed = 55;
         }
         if (other.gameObject.CompareTag("SpitterSpit"))
@@ -245,7 +245,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Slow"))
         {
-            speed = speed * 2;
+            speed = speed * 2.3f;
         }
     }
     void GameOver() 

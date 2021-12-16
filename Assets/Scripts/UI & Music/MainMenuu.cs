@@ -14,10 +14,12 @@ public class MainMenuu : MonoBehaviour
     {
         Debug.Log("start");
         SceneManager.LoadScene("Main Scene");
+       // Time.timeScale = 1f;
     }
 
     public void GotoMainMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
     }
 

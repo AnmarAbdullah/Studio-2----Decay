@@ -69,7 +69,7 @@ public class Boss : MonoBehaviour
 
         if(target.health <= 0)
         {
-            player.transform.position = new Vector3(192, 8, 174);
+            player.transform.position = new Vector3(434, 151, 1330);
             pplayer.ChallengeIndex = 1;
             target.health = 1;
             BossHealthUI.gameObject.SetActive(false);
