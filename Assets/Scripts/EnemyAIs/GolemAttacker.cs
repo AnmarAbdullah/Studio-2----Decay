@@ -6,7 +6,7 @@ public class GolemAttacker : MonoBehaviour
 {
    public Transform Golem;
     [SerializeField]float speed;
-    float dist;
+    [SerializeField]float dist;
 
     Animator anim;
     void Start()
@@ -22,7 +22,7 @@ public class GolemAttacker : MonoBehaviour
          transform.LookAt(Golem);
          transform.Translate(Vector3.forward * speed * Time.deltaTime);
         
-        if (dist <= 3)
+        if (dist <= 6)
         {
             anim.SetBool("isAttacking", true);
             anim.SetBool("isChasing", false);

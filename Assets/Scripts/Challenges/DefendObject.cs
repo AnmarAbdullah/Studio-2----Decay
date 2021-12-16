@@ -48,16 +48,16 @@ public class DefendObject : MonoBehaviour
         }
     }
 
-    /*void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Zombie"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             health -= 10f;
         }
-    }*/
+    }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Zombie"))
+        if (other.gameObject.CompareTag("Enemy"))
         {
             health -= 30f;
         }

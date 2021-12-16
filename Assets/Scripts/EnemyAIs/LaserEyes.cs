@@ -16,7 +16,7 @@ public class LaserEyes : MonoBehaviour
         lr.SetPosition(0, transform.position);
         transform.LookAt(seekObject);
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, 100))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, 1000))
         {
             if (hit.collider)
             {
