@@ -13,7 +13,7 @@ public class Credits : MonoBehaviour
     public AudioSource vo17;
     public AudioSource creditsGrowl;
     public AudioSource creditsMusic;
-    //[SerializeField] GameObject destroyTrigger;
+    [SerializeField] GameObject destroyTrigger;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -25,17 +25,19 @@ public class Credits : MonoBehaviour
         
 
         StartCoroutine(EndCredits());
+        
     }
 
     IEnumerator EndCredits()
     {
-        //Destroy(destroyTrigger);
+        
         vo17.Play();
         creditsSubtitle.gameObject.SetActive(true);
         yield return new WaitForSeconds(5.5f);
         creditsSubtitle.gameObject.SetActive(false);
         yield return new WaitForSeconds(2.5f);
         creditsGrowl.Play();
+        Destroy(destroyTrigger);
         yield return new WaitForSeconds(1.5f);
         creditsMusic.Play();
         yield return new WaitForSeconds(15.5f);
